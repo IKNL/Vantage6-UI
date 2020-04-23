@@ -6,7 +6,6 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
 import Login from './Login';
-import { logIn } from '../actions';
 
 class App extends React.Component {
 

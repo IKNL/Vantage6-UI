@@ -3,6 +3,7 @@ import userReducer from './userReducer';
 import orgReducer from './orgReducer';
 import nodeReducer from './nodeReducer';
 import loginReducer from './loginReducer';
+import resultReducer from './resultReducer';
 
 const selectedUserReducer = (selectedUser = null, action) => {
     if(action.type === 'USER_SELECTED'){
@@ -18,13 +19,22 @@ const selectedNodeReducer = (selectedNode = null, action) => {
     return selectedNode;
 };
 
+const selectedPageReducer = (selectedPage = null, action) => {
+    if(action.type === 'PAGE_SELECTED'){
+        return action.payload;
+    }
+    return selectedPage;
+};
+
 
 
 export default combineReducers({
     users: userReducer,
     organisations: orgReducer,
     selectedUser: selectedUserReducer,
+    selectedPage: selectedPageReducer,
     nodes: nodeReducer,
     selectedNode: selectedNodeReducer,
-    token: loginReducer
+    token: loginReducer,
+    results: resultReducer
 });

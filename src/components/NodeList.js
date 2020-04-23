@@ -43,9 +43,8 @@ class NodeList extends React.Component {
         console.log(this.props.node);
         return (
             <div className="ui relaxed divided list">
-                <h2 className="ui">
-                    Node status
-                </h2>
+                {this.renderList()}
+                {this.renderList()}
                 {this.renderList()}
             </div>
         );

@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import OrgHeader from './OrgHeader';
 
 const UserDetail = ({user}) => {
+
     if (!user){
         return <div>Select a user</div>
     }
+
     return (
-        <div className="ui segment">
+        <div className="ui segment fluid">
             
             <div className="content">
                     <div className="summary">

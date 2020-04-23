@@ -46,22 +46,25 @@ class UserList extends React.Component {
 
     render(){
         return (
-            <div className="ui relaxed divided list">
-                <h2 className="ui">Users</h2>
-                {this.renderList()}
+            <div className="ui raised fluid card">
+                <div className="ui relaxed divided list">
+                    <h2 className="ui">Users</h2>
+                    {this.renderList()}
 
-                <div className="item">
-                <i className='chess icon middle aligned'  />
-                    <div className="content">
-                        <div className="ui sub header user-name green">
-                            CREATE NEW
+                    <div className="item">
+                    <i className='chess icon middle aligned'  />
+                        <div className="content">
+                            <div className="ui sub header user-name green">
+                                CREATE NEW
+                            </div>
+                            <div className="ui sub header user-role green">
+                                USER
+                            </div>
                         </div>
-                        <div className="ui sub header user-role green">
-                            USER
-                        </div>
-                    </div>
-                </div>        
+                    </div>        
+                </div>
             </div>
+
         );
     }
 }

@@ -1,13 +1,23 @@
 import axios from 'axios';
-import { logIn } from '../actions';
+import { connect } from 'react-redux';
 
-const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODY4NzUwMDgsIm5iZiI6MTU4Njg3NTAwOCwianRpIjoiMTBjNjI0MjktYTJmMS00ZGI2LWJjNGYtOGQ2NTdlOTI2YTdmIiwiZXhwIjoxNTg2ODk2NjA4LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsidHlwZSI6InVzZXIiLCJyb2xlcyI6WyJyb290Il19fQ.75K0fg5MV_Pk-87598DBkcmzdwGNQHj0d3vZ8_4Qyag";
+const token = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1ODc2MjU3MzgsIm5iZiI6MTU4NzYyNTczOCwianRpIjoiMDJlMGM1MzktMWYwYS00MWNjLWI3YjctNTUzOGRmYjI3YzNjIiwiZXhwIjoxNTg3NjQ3MzM4LCJpZGVudGl0eSI6MSwiZnJlc2giOmZhbHNlLCJ0eXBlIjoiYWNjZXNzIiwidXNlcl9jbGFpbXMiOnsidHlwZSI6InVzZXIiLCJyb2xlcyI6WyJyb290Il19fQ.e_yze4GMpQHcyX39BBHcS9dY1aIk6-M_1XrfAFecvZc"
+// const updateToken = ({token}) => {
+
+//     return ({
+//         authorization: `Bearer ${token}`
+//     })
+// }
 
 export default axios.create({
-    headers:{
+    headers: {
         authorization: `Bearer ${token}`
     },
     baseURL: 'http://localhost:5000/api/'
-})
+});
 
+// const mapStateToProps = (state) => {
+//     return { token: state.token };
+// }
 
+// connect(mapStateToProps)(updateToken)

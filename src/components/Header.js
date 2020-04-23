@@ -13,7 +13,12 @@ class Header extends React.Component {
         return(
         <div className="Header">
             <img src={logo} height='60' alt="logo" />
-            <p id="username">Logged in as: {this.state.username}</p>
+            <div className="user-login item horizontal list">
+                <div className="content">
+                    <div className="ui sub header">{this.state.username}</div>
+                    USER ROLE
+                </div>
+            </div>
             <button className="ui right floated button login-button">Log Out</button>
         </div>);
     } 
