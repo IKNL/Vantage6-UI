@@ -4,10 +4,10 @@ import ResultList from './ResultList';
 
 const ItemSummary = () => {
     return (
-        <div className="ui two column grid statistics cards">
+        <div className="ui doubling two column grid statistics cards">
             <div className="column">
                 <div className="statistic ui raised fluid card">
-                    <h2 class="ui left aligned header">
+                    <h2 className="ui left aligned header">
                     NODES
                     </h2>
                     <NodeList />
@@ -16,7 +16,7 @@ const ItemSummary = () => {
             </div>
             <div className="column">
                 <div className="statistic ui raised fluid card">
-                    <h2 class="ui left aligned header">
+                    <h2 className="ui left aligned header">
                     LATEST RESULTS
                     </h2>
                     <ResultList />

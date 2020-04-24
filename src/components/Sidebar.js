@@ -2,37 +2,45 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { selectPage } from '../actions';
-
+import SidebarButton from './SidebarButton';
 class Sidebar extends React.Component {
     
+
+
     render(){
         return (
             <div className="Sidebar">
-                <button 
-                onClick={() => this.props.selectPage(0)}
-                >
-                    <i className="home icon"></i>
-                </button>
-                <button className="ui icon standard"
-                onClick={() => this.props.selectPage(1)}
-                >
-                    <i className="user icon"></i>
-                </button>
-                <button className="ui icon standard"
-                onClick={() => this.props.selectPage(2)}
-                >
-                    <i className="chart bar icon"></i>
-                </button>
-                <button className="ui icon standard"
-                onClick={() => this.props.selectPage(3)}
-                >
-                    <i className="superscript icon"></i>
-                </button>
-                <button className="ui icon"
-                onClick={() => this.props.selectPage(4)}
-                >
-                    <i className="recycle icon"></i>
-                </button>
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={0} 
+                buttonName="HOME" 
+                buttonIcon="home icon" 
+                />
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={1}
+                buttonName="USERS" 
+                buttonIcon="user icon" 
+                />
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={2}
+                buttonName="RESULTS" 
+                buttonIcon="chart bar icon" 
+                />
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={3}
+                buttonName="ALGORITHMS" 
+                buttonIcon="superscript icon" 
+                />
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={4}
+                buttonName="TASKS" 
+                buttonIcon="recycle icon" 
+                />
+                
             </div>
         );
     }
