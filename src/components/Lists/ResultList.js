@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllContent} from '../actions';
+import { fetchAllContent} from '../../actions';
 
 class ResultList extends React.Component {
 
@@ -10,7 +10,7 @@ class ResultList extends React.Component {
 
     renderList(){
         
-        return this.props.results.slice(0, 3).map((result, props) => {
+        return this.props.results.slice(0, this.props.listLength).map((result, props) => {
                 return (
                     <div className="item" key={result.id}>
                         <div className="content">

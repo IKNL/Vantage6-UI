@@ -1,6 +1,6 @@
 import React from 'react';
 import './Header.css';
-import logo from './artboard1.png'
+import logo from '../images/artboard1.png'
 class Header extends React.Component {
 
     state = { username: "ROOT" }

@@ -5,9 +5,11 @@ export const fetchAllContent = () => async (dispatch, getState) => {
 
     await dispatch(fetchUsers());
     await dispatch(fetchResults());
+    await dispatch(fetchCollaborations());
+    await dispatch(fetchNodes());
     const orgs = _.uniq(_.map(getState().users, 'organization.id'));
     orgs.forEach(org => dispatch(fetchOrg(org)));
-    await dispatch(fetchNode(8));
+
 
 };
 
@@ -46,6 +48,27 @@ export const selectUser = (user) => {
     };
 };
 
+export const editUser = (user) => {
+    return{
+        type: 'EDIT_USER',
+        payload: user
+    };
+};
+
+
+//COLLABORATIONS
+export const fetchCollaborations = () => async function(dispatch){
+    const response = await jsonPlaceholder.get('./collaboration');
+    dispatch({type:"FETCH_COLLABORATIONS", payload: response.data});
+}
+
+export const selectCollab = (collab) => {
+    return{
+        type: 'COLLABORATION_SELECTED',
+        payload: collab
+    }
+}
+
 //FETCH A SINGLE ORGANIZATION
 export const fetchOrg = (id) => async function(dispatch){
     if(id){
@@ -63,7 +86,7 @@ export const fetchNodes = () => async function(dispatch){
 //FETCH A SINGLE NODE
 export const fetchNode = id => async dispatch => {
     const response = await jsonPlaceholder.get(`/node/${id}`);
-    dispatch({type: 'FETCH_NODES', payload: response.data });
+    dispatch({type: 'FETCH_NODE', payload: response.data });
 };
 
 export const selectNode = (node) => {
@@ -78,8 +101,8 @@ export const logIn = () => async dispatch => {
     
     console.log("Logging in");
     const response = await jsonPlaceholder.post(`/token/user`, {
-            password: "root",
-            username: "root"
+            password: "password",
+            username: "frank@iknl.nl"
     });
     console.log("Logged in");
     dispatch({type: 'LOGIN', payload: response.data });

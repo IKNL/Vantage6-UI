@@ -3,9 +3,9 @@ import { connect } from 'react-redux';
 
 import StatisticBlock from './StatisticBlock';
 import ItemSummary from './ItemSummary';
-import CollaborationRequests from './CollaborationRequests';
-import UserList from './UserList';
-import UserDetail from './UserDetail';
+import UserContent from './ContentManagers/UserContent';
+import ResultContent from './ContentManagers/ResultContent';
+import NodeContent from './ContentManagers/NodeContent';
 
 const MainContent = ({selectedPage}) => {
 
@@ -15,32 +15,16 @@ const MainContent = ({selectedPage}) => {
                 <div className="content main-content">
                     <StatisticBlock />
                     <ItemSummary />
-                    <CollaborationRequests />
                 </div>
             </div>          
         );
     }else if(selectedPage === 1){ //USERS
         return(
-            <div>
-                <div className="content main-content">
-                    <div className="ui two column grid">
-                        <div className="column">
-                        <UserList />
-                        </div>
-                        <div className="column">
-                        <UserDetail />
-                        </div>
-                    </div>
-                </div>
-            </div>          
+            <UserContent />
         );
     }else if(selectedPage === 2){ //RESULTS
         return(
-            <div>
-                <div className="content main-content">
-                    2 selected
-                </div>
-            </div>          
+            <ResultContent />  
         );
     }else if(selectedPage === 3){ //ALGORITHMS
         return(
@@ -50,13 +34,21 @@ const MainContent = ({selectedPage}) => {
                 </div>
             </div>          
         );
-    }else if(selectedPage === 4){ //COLLABORATIONS
+    }else if(selectedPage === 4){ //TASKS
         return(
             <div>
                 <div className="content main-content">
                     4 selected
                 </div>
             </div>          
+        );
+    }else if(selectedPage === 5){ //NODES
+        return(
+            <NodeContent /> 
+        );
+    }else if(selectedPage === 6){ //COLLABORATIONS
+        return(
+            <div>COLLABORATIONS selected</div>
         );
     }
 
@@ -66,7 +58,6 @@ const MainContent = ({selectedPage}) => {
             <div className="content main-content">
                 <StatisticBlock />
                 <ItemSummary />
-                <CollaborationRequests />
             </div>
         </div>          
     );

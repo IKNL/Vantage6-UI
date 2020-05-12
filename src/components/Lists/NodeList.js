@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectNode, fetchAllContent } from '../actions';
+import { selectNode, fetchAllContent } from '../../actions';
 
 class NodeList extends React.Component {
 
@@ -20,10 +20,11 @@ class NodeList extends React.Component {
 
     }
 
-    renderList(){
+    renderList(nodeID){
+        console.log(this.props.nodes);
         return (
                     <div className="item" key={this.props.nodes.id}
-                    
+                    onClick={() => this.props.selectNode(nodeID)}
                     >
                         {this.nodeIcon(this.props.nodes.status)}
                         <div className="content">
@@ -43,9 +44,7 @@ class NodeList extends React.Component {
         console.log(this.props.node);
         return (
             <div className="ui relaxed divided list">
-                {this.renderList()}
-                {this.renderList()}
-                {this.renderList()}
+                {this.renderList(1)}
             </div>
         );
     }

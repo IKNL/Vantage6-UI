@@ -40,6 +40,18 @@ class Sidebar extends React.Component {
                 buttonName="TASKS" 
                 buttonIcon="recycle icon" 
                 />
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={5}
+                buttonName="NODES" 
+                buttonIcon="server icon" 
+                />
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={6}
+                buttonName="COLLABORATIONS" 
+                buttonIcon="handshake icon" 
+                />
                 
             </div>
         );

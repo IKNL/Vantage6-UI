@@ -1,10 +1,14 @@
 import React from 'react';
+import { connect  } from 'react-redux';
 
-const StatisticBlock = () => {
+import { selectPage } from '../actions';
+
+const StatisticBlock = ({selectPage}) => {
     return (
         <div className="ui doubling four column grid statistics cards">
             <div className="column">
-                <div className="statistic ui raised fluid card">
+                <div className="statistic ui raised fluid card"
+                onClick={() => selectPage(1)}>
                     <h2 className="ui aligned icon header">
                     <i className="users icon"></i>
                     USERS
@@ -15,7 +19,8 @@ const StatisticBlock = () => {
                 </div>
             </div>
             <div className="column">
-                <div className="statistic ui raised fluid card">
+                <div className="statistic ui raised fluid card"
+                onClick={() => selectPage(5)}>
                     <h2 className="ui center aligned icon header">
                     <i className="server icon"></i>
                     NODES
@@ -26,7 +31,8 @@ const StatisticBlock = () => {
                 </div>
             </div>
             <div className="column">
-                <div className="statistic ui raised fluid card">
+                <div className="statistic ui raised fluid card"
+                onClick={() => selectPage(2)}>
                     <h2 className="ui center aligned icon header">
                     <i className="calculator icon"></i>
                     COMPUTATIONS
@@ -37,7 +43,8 @@ const StatisticBlock = () => {
                 </div>
             </div>
             <div className="column">
-                <div className="statistic ui raised fluid card">
+                <div className="statistic ui raised fluid card"
+                onClick={() => selectPage(6)}>
                     <h2 className="ui center aligned icon header">
                     <i className="handshake icon"></i>
                     COLLABORATIONS
@@ -53,4 +60,5 @@ const StatisticBlock = () => {
     );
 }
 
-export default StatisticBlock;
+
+export default connect(null, { selectPage })(StatisticBlock);

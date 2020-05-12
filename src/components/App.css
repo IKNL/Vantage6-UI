@@ -15,6 +15,7 @@ body{
     background-color: #e5e5e5;
 }
 
+
 .Header{
     height: 60px;
     position: fixed;
@@ -29,6 +30,9 @@ body{
     box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
 }
 
+.login-panel{
+    margin-top: 100px;
+}
 .user-login{
     font-size: 14px;
     float: right;
@@ -38,6 +42,27 @@ body{
     margin-right: 120px;
     MARGIN-TOP: 13PX;
     color: #333;
+}
+
+.login-background-image{
+    position: fixed;
+    top: 0;
+    left: 0;
+    min-width: 100vw;
+    min-height: 100vh;
+    z-index: -2;
+    background-size: cover;
+}
+
+.login-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+    background-color: #0f497b;
+    opacity: 0.5;
 }
 
 #username{
@@ -103,6 +128,7 @@ body{
     border-style: none;
     position: relative;
     cursor: pointer;
+    outline: none;
 }
 .Sidebar i {
     color: white !important;
@@ -129,9 +155,6 @@ body{
 
 .item:hover{
     cursor: pointer;
-    background-color: rgba(255,255,255,0.1);
-    color: #f9f9f9;
-    transition: all 0.2s;
 }
 
 .user-name{

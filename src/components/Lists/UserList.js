@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectUser, fetchAllContent} from '../actions';
+import { selectUser, editUser, fetchAllContent} from '../../actions';
 
 class UserList extends React.Component {
 
@@ -26,7 +26,7 @@ class UserList extends React.Component {
 
                 return (
                     <div className="item" key={user.id}
-                    onClick={() => this.props.selectUser(user)}
+                    onClick={() => {this.props.selectUser(user); this.props.editUser(null)}}
                     >
                         {this.userIcon(user.roles)}
                         <div className="content">
@@ -46,9 +46,8 @@ class UserList extends React.Component {
 
     render(){
         return (
-            <div className="ui raised fluid card">
                 <div className="ui relaxed divided list">
-                    <h2 className="ui">Users</h2>
+
                     {this.renderList()}
 
                     <div className="item">
@@ -63,7 +62,6 @@ class UserList extends React.Component {
                         </div>
                     </div>        
                 </div>
-            </div>
 
         );
     }
@@ -73,4 +71,4 @@ const mapStateToProps = (state) => {
     return { users: state.users, selectedUser: state.selectedUser };
 }
 
-export default connect(mapStateToProps, { fetchAllContent, selectUser })(UserList);
+export default connect(mapStateToProps, { fetchAllContent, selectUser, editUser })(UserList);
