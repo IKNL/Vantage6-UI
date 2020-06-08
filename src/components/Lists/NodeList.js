@@ -20,31 +20,34 @@ class NodeList extends React.Component {
 
     }
 
-    renderList(nodeID){
-        console.log(this.props.nodes);
-        return (
-                    <div className="item" key={this.props.nodes.id}
-                    onClick={() => this.props.selectNode(nodeID)}
+    renderList(){
+
+        return this.props.nodes.map((node, props) => {
+            if(node.id !== null){
+                return (
+                    <div className="item" key={node.id}
+                    onClick={() => this.props.selectNode(node.id)}
                     >
-                        {this.nodeIcon(this.props.nodes.status)}
+                        {this.nodeIcon(node.status)}
                         <div className="content">
                             <div className="ui sub header user-name">
-                                {this.props.nodes.name} 
+                                {node.name} 
                             </div>
                             <div className="ui sub header user-role">
-                                {this.props.nodes.status}
+                                {node.status}
                             </div>
                         </div>
                     </div>            
+                );
+            }
             
-        );
+        });
     }
 
     render(){
-        console.log(this.props.node);
         return (
             <div className="ui relaxed divided list">
-                {this.renderList(1)}
+                {this.renderList()}
             </div>
         );
     }

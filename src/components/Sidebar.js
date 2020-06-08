@@ -25,7 +25,7 @@ class Sidebar extends React.Component {
                 <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={2}
-                buttonName="RESULTS" 
+                buttonName="COMPUTATIONS" 
                 buttonIcon="chart bar icon" 
                 />
                 <SidebarButton 
@@ -34,12 +34,12 @@ class Sidebar extends React.Component {
                 buttonName="ALGORITHMS" 
                 buttonIcon="superscript icon" 
                 />
-                <SidebarButton 
+                {/* <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={4}
                 buttonName="TASKS" 
                 buttonIcon="recycle icon" 
-                />
+                /> */}
                 <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={5}

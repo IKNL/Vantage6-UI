@@ -1,32 +1,31 @@
 import React from 'react';
 
-import ResultList from '../Lists/ResultList';
-import ResultDetail from '../DetailViews/ResultDetail';
-// import ResultDetail from '../ResultDetail';
+import AlgorithmList from '../Lists/AlgorithmList';
+import AlgorithmDetail from '../DetailViews/AlgorithmDetail';
 
-const ResultContent = () => {
+const AlgorithmContent = () => {
     return(
         <div>
                 <div className="content main-content">
                     <div className="ui two column grid">
                         <div className="column">
-                        <h2 className="ui left aligned header">
-                        RESULTS
-                        </h2>
+                            <h2 className="ui left aligned header">
+                            ALGORITHMS
+                            </h2>
                             <div className="ui raised fluid card">
-                            <ResultList listLength={15} />
+                            <AlgorithmList />
                             </div>
                         </div>
                         <div className="column">
                         <h2 className="ui left aligned header">
-                        SELECTED RESULT
+                        SELECTED ALGORITHM
                         </h2>
-                        <ResultDetail />
+                        <AlgorithmDetail />
                         </div>
                     </div>
                 </div>
-            </div>         
+            </div>          
     );
 }
 
-export default ResultContent;
+export default AlgorithmContent;

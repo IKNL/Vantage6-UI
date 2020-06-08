@@ -1,29 +1,34 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchAllContent, selectResult } from '../../actions';
+import { selectNode, fetchAllContent } from '../../actions';
 
-class ResultList extends React.Component {
+class AlgorithmList extends React.Component {
 
     componentDidMount(){
         this.props.fetchAllContent();
     }
 
     renderList(){
-        
-        return this.props.results.slice(0, this.props.listLength).map((result, props) => {
+
+        return this.props.algorithms.map((algo, props) => {
+            if(algo.id !== null){
                 return (
-                    <div className="item" key={result.id}
-                    onClick={() => this.props.selectResult(result.id)}>
+                    <div className="item" key={algo.id}
+                    onClick={() => this.props.selectNode(algo.id)}
+                    >
+                        <i className="superscript icon yellow middle aligned"></i>
                         <div className="content">
                             <div className="ui sub header user-name">
-                                {result.input} 
+                                {algo.name} 
                             </div>
                             <div className="ui sub header user-role">
-                                {result.assigned_at}
+                                {algo.status}
                             </div>
                         </div>
                     </div>            
                 );
+            }
+            
         });
     }
 
@@ -37,7 +42,7 @@ class ResultList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { results: state.results };
+    return { algorithms: state.algorithms, selectedAlgorithm: state.selectedAlgorithm };
 }
 
-export default connect(mapStateToProps, { fetchAllContent, selectResult })(ResultList);
+export default connect(mapStateToProps, { fetchAllContent })(AlgorithmList);

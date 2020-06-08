@@ -14,14 +14,14 @@ class CollaborationList extends React.Component {
     getNodeIds(nodes){
 
         return nodes.map((node) => {
-            return <NodeIcon nodeID={node.id} />;
+            return <NodeIcon nodeID={node.id} key={node.id} />;
         });
     }
 
     getOrgIds(orgs){
 
         return orgs.map((org) => {
-            return <OrgIcon orgID={org.id} />;
+            return <OrgIcon orgID={org.id} key={org.id} />;
         });
     }
 

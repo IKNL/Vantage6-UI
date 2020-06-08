@@ -10,9 +10,7 @@ import Login from './Login';
 class App extends React.Component {
 
     render(){
-        console.log(this.props)
         if(this.props.token[0] !== undefined){
-            console.log(this.props.token[0].access_token)
             return( <div>
                 <Header />
                 <Sidebar />
@@ -23,7 +21,6 @@ class App extends React.Component {
             );      
         }else{
             return( <div>
-                <Header />
                 <div className="ui centered grid container">
                     <Login />    
                 </div>

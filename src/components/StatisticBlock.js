@@ -2,63 +2,23 @@ import React from 'react';
 import { connect  } from 'react-redux';
 
 import { selectPage } from '../actions';
+import Statistic from './Statistic';
 
-const StatisticBlock = ({selectPage}) => {
+const StatisticBlock = (props) => {
     return (
         <div className="ui doubling four column grid statistics cards">
-            <div className="column">
-                <div className="statistic ui raised fluid card"
-                onClick={() => selectPage(1)}>
-                    <h2 className="ui aligned icon header">
-                    <i className="users icon"></i>
-                    USERS
-                    </h2>
-                    <div className="value">
-                    14
-                    </div>
-                </div>
-            </div>
-            <div className="column">
-                <div className="statistic ui raised fluid card"
-                onClick={() => selectPage(5)}>
-                    <h2 className="ui center aligned icon header">
-                    <i className="server icon"></i>
-                    NODES
-                    </h2>
-                    <div className="value">
-                    4
-                    </div>
-                </div>
-            </div>
-            <div className="column">
-                <div className="statistic ui raised fluid card"
-                onClick={() => selectPage(2)}>
-                    <h2 className="ui center aligned icon header">
-                    <i className="calculator icon"></i>
-                    COMPUTATIONS
-                    </h2>
-                    <div className="value">
-                    1024
-                    </div>
-                </div>
-            </div>
-            <div className="column">
-                <div className="statistic ui raised fluid card"
-                onClick={() => selectPage(6)}>
-                    <h2 className="ui center aligned icon header">
-                    <i className="handshake icon"></i>
-                    COLLABORATIONS
-                    </h2>
-                    <div className="value">
-                    4
-                    </div>
-                </div>
-            </div>
+            <Statistic uiClasses="users icon" onClickFunction={1} blockName="USERS" blockCount={props.users.length} selectPage={props.selectPage} />
+            <Statistic uiClasses="server icon" onClickFunction={5} blockName="NODES" blockCount={props.nodes.length} selectPage={props.selectPage} />
+            <Statistic uiClasses="calculator icon" onClickFunction={2} blockName="COMPUTATIONS" blockCount={props.results.length} selectPage={props.selectPage} />
+            <Statistic uiClasses="handshake icon" onClickFunction={6} blockName="COLLABORATIONS" blockCount={props.collaborations.length} selectPage={props.selectPage} />
         </div>
             
 
     );
 }
 
+const mapStateToProps = (state) => {
+    return { results: state.results, users: state.users, collaborations: state.collaborations, nodes: state.nodes };
+}
 
-export default connect(null, { selectPage })(StatisticBlock);
+export default connect(mapStateToProps, { selectPage })(StatisticBlock);

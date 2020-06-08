@@ -1,8 +1,10 @@
 export default (state = [], action) => {
+
     switch(action.type){
-        case 'FETCH_ORGANIZATIONS':
+        case 'FETCH_ALGORITHMS':
             return action.payload;
         default:
             return state;
     }
+
 };

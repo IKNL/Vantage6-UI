@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 
 import NodeList from './Lists/NodeList';
 import ResultList from './Lists/ResultList';
-import CollaborationList from './Lists/CollaborationList';
 import { selectPage } from '../actions';
+import CollaborationRequests from './Lists/CollaborationRequests';
 
 const ItemSummary = (props) => {
     return (
@@ -37,9 +37,9 @@ const ItemSummary = (props) => {
                 <div className="column">
                     <div className="statistic ui raised fluid card">
                         <h2 className="ui left aligned header">
-                        COLLABORATIONS
+                        COLLABORATION REQUESTS
                         </h2>
-                        <CollaborationList />
+                        <CollaborationRequests />
                         <button className="ui button"
                         onClick={() => props.selectPage(6)}
                         >View all collaborations</button>

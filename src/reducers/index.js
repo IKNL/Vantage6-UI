@@ -8,6 +8,9 @@ import orgReducer from './orgReducer';
 import nodeReducer from './nodeReducer';
 import loginReducer from './loginReducer';
 import resultReducer from './resultReducer';
+import algorithmReducer from './algorithmReducer';
+
+
 
 const selectedUserReducer = (selectedUser = null, action) => {
     if(action.type === 'USER_SELECTED'){
@@ -22,6 +25,20 @@ const editUserReducer = (isEditing = null, action) => {
     }
     return isEditing;
 };
+
+const selectedResultReducer = (selectedResult = null, action) => {
+    if(action.type === 'RESULT_SELECTED'){
+        return action.payload;
+    }
+    return selectedResult;
+}
+
+const selectedOrgReducer = (selectedOrg = null, action) => {
+    if(action.type === 'ORGANIZATION_SELECTED'){
+        return action.payload;
+    }
+    return selectedOrg;
+}
 
 const selectedNodeReducer = (selectedNode = null, action) => {
     if(action.type === 'NODE_SELECTED'){
@@ -44,19 +61,36 @@ const selectedPageReducer = (selectedPage = null, action) => {
     return selectedPage;
 };
 
+const setUserReducer = (user = null, action) => {
+    if(action.type === 'FETCH_ACTIVE_USER'){
+        return action.payload;
+    }
+    return user;
+}
+
+const logoutReducer = (user = null, token = null, action) => {
+    if(action.type === 'LOGGED_OUT'){
+
+    }
+    return user;
+}
 
 
 export default combineReducers({
     users: userReducer,
-    organisations: orgReducer,
+    organizations: orgReducer,
+    selectedOrg: selectedOrgReducer,
     selectedUser: selectedUserReducer,
     isEditing: editUserReducer,
     selectedPage: selectedPageReducer,
     collaborations: collabReducer,
     selectedCollab: selectedCollabReducer,
+    algorithms: algorithmReducer,
     nodes: nodeReducer,
     selectedNode: selectedNodeReducer,
     token: loginReducer,
     results: resultReducer,
-    form: formReducer
+    selectedResult: selectedResultReducer,
+    form: formReducer,
+    user: setUserReducer
 });

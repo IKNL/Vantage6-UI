@@ -2,23 +2,24 @@ import React from 'react';
 import { connect } from 'react-redux';
 import OrgHeader from '../OrgHeader';
 
-const NodeDetail = ({selectedNode}) => {
+const NodeDetail = ({selectedNode, nodes}) => {
 
     if (!selectedNode){
         return <div>Select a node</div>
     }
-
+    
+    var showNode = nodes.filter(x => x.id === selectedNode);
     return (
         <div className="ui segment fluid">
             
             <div className="content">
                     <div className="summary">
-                    {selectedNode.status}
+                    {showNode[0].status}
                     </div>
             </div>
             <br></br>
             <div className="content">
-                <div className="ui header">{selectedNode.name}</div>
+                <div className="ui header">{showNode[0].name}</div>
             </div>
 
             <div className="ui divider"></div>
@@ -29,7 +30,7 @@ const NodeDetail = ({selectedNode}) => {
 };
 
 const mapStateToProps = (state) => {
-    return { selectedNode: state.selectedNode }
+    return { selectedNode: state.selectedNode, nodes: state.nodes }
 };
 
 export default connect(mapStateToProps)(NodeDetail);

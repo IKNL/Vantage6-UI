@@ -7,12 +7,14 @@ export const fetchAllContent = () => async (dispatch, getState) => {
     await dispatch(fetchResults());
     await dispatch(fetchCollaborations());
     await dispatch(fetchNodes());
+    await dispatch(fetchOrgs());
     const orgs = _.uniq(_.map(getState().users, 'organization.id'));
     orgs.forEach(org => dispatch(fetchOrg(org)));
-
-
 };
 
+export const fetchProfile = (userUrl) => async (dispatch) => {
+    await dispatch(fetchActiveUser(userUrl));
+}
 
 //SELECT A PAGE FROM THE SIDEBAR TO VIEW
 export const selectPage = (page) => {
@@ -30,14 +32,26 @@ export const fetchUsers = () => async function(dispatch){
 
 //FETCH A SINGLE USER
 export const fetchUser = id => async dispatch => {
-    const response = await jsonPlaceholder.get(`/user/'${id}`);
+    const response = await jsonPlaceholder.get(id);
     dispatch({type: 'FETCH_USER', payload: response.data });
+};
+
+export const fetchActiveUser = id => async dispatch => {
+    const response = await jsonPlaceholder.get(id);
+    dispatch({type: 'FETCH_ACTIVE_USER', payload: response.data });
 };
 
 //FETCH ALL RESULTS
 export const fetchResults    = () => async function(dispatch){
     const response = await jsonPlaceholder.get('/result');
     dispatch({type: "FETCH_RESULTS", payload: response.data });
+};
+
+export const selectResult = (result) => {
+    return{
+        type: 'RESULT_SELECTED',
+        payload: result
+    };
 };
 
 //SELECT A SINGLE USER FROM LIST
@@ -69,11 +83,43 @@ export const selectCollab = (collab) => {
     }
 }
 
+//ALGORITHMS
+export const fetchAlgorithms = () => async function(dispatch){
+    const response = await jsonPlaceholder.get('./collaboration');
+    dispatch({type:"FETCH_ALGORITHMS", payload: response.data});
+}
+
+export const selectAlgorithm = (algo) => {
+    return{
+        type: 'ALGORITHM_SELECTED',
+        payload: algo
+    }
+}
+
+export const fetchOrgs = () => async function(dispatch){
+    const response = await jsonPlaceholder.get('./organization');
+    dispatch({type:"FETCH_ORGANIZATIONS", payload: response.data});
+}
+
 //FETCH A SINGLE ORGANIZATION
 export const fetchOrg = (id) => async function(dispatch){
     if(id){
         const response = await jsonPlaceholder.get(`/organization/${id}`);
         dispatch({type: 'FETCH_ORGANISATION', payload: response.data });
+    }
+}
+
+export const selectOrg = (id) => {
+    return{
+        type: 'ORGANIZATION_SELECTED',
+        payload: id
+    }
+}
+
+export const fetchOrgName = (id) => async function(){
+    if(id){
+        const response = jsonPlaceholder.get(`/organization/${id}`);
+        return response.data.name;
     }
 }
 
@@ -96,14 +142,23 @@ export const selectNode = (node) => {
     };
 };
 
-//LOGIN
-export const logIn = () => async dispatch => {
+// //LOGIN
+// export const logIn = ({uname, pword}) => async dispatch => {
     
-    console.log("Logging in");
-    const response = await jsonPlaceholder.post(`/token/user`, {
-            password: "password",
-            username: "frank@iknl.nl"
-    });
-    console.log("Logged in");
-    dispatch({type: 'LOGIN', payload: response.data });
-};
+//     console.log("Logging in");
+//     const response = await jsonPlaceholder.post(`/token/user`, {
+//             password: pword,
+//             username: uname
+//     });
+//     console.log("Logged in");
+//     dispatch({type: 'LOGIN', payload: response.data });
+// };
+
+export const getUsername = (url) => async dispatch => {
+
+    const response = await fetchUser(url);
+    dispatch({
+        type: 'USER_LOGGED_IN',
+        payload: response
+    })
+}
