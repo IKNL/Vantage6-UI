@@ -28,12 +28,12 @@ class Sidebar extends React.Component {
                 buttonName="COMPUTATIONS" 
                 buttonIcon="chart bar icon" 
                 />
-                <SidebarButton 
+                {/* <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={3}
                 buttonName="ALGORITHMS" 
                 buttonIcon="superscript icon" 
-                />
+                /> */}
                 {/* <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={4}

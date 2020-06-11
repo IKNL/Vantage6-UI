@@ -2,8 +2,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
+import { editUser, selectUser } from '../../actions';
+import { editUserRemote } from '../../actions/upstreamActions';
 
-import { editUser } from '../../actions/upstreamActions';
 
 class UserDetailEdit extends React.Component {
 
@@ -30,8 +31,9 @@ class UserDetailEdit extends React.Component {
     }
 
     onSubmit = (formValues) => {
-        const editUser = this.props.editingUser;
-        this.props.editUser(editUser, formValues);
+        this.props.editUserRemote(this.props.user.id, formValues);
+        this.props.selectUser(null);
+        this.props.editUser(null);
     }
 
     render(){
@@ -50,7 +52,7 @@ class UserDetailEdit extends React.Component {
 };
 
 const mapStateToProps = (state) => {
-    return { editUser: state.isEditing }
+    return { user: state.selectedUser, isEditing: state.isEditing }
 };
 
 const validate = (formValues) => {
@@ -72,4 +74,4 @@ const formWrapped = reduxForm({
     validate: validate
 })(UserDetailEdit);
 
-export default connect(mapStateToProps, { editUser })(formWrapped);
+export default connect(mapStateToProps, { editUser, editUserRemote, selectUser })(formWrapped);

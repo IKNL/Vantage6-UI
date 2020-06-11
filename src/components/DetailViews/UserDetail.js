@@ -12,7 +12,7 @@ class UserDetail extends React.Component {
         if(this.props.activeUser){
             if(this.props.activeUser.type === "user"){
                 return (<div>
-                    <button className="ui button green" onClick={() => this.props.editUser(this.props.user.id) }>
+                    <button className="ui button green" onClick={() => this.props.editUser(this.props.userSelected.id) }>
                     Edit user
                     </button>
                     <button className="ui button red">Delete user</button>

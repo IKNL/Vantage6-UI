@@ -21,10 +21,6 @@ const NodeDetail = ({selectedNode, nodes}) => {
             <div className="content">
                 <div className="ui header">{showNode[0].name}</div>
             </div>
-
-            <div className="ui divider"></div>
-            <button className="ui button green">Edit node</button>
-            <button className="ui button red">Delete node</button>
         </div>
         );
 };

@@ -10,22 +10,24 @@ import { login } from '../actions/upstreamActions';
 
 class Login extends React.Component{
 
-    state = {img: trolltunga}
+    constructor(props){
+        super(props);
+        this.state = {img: trolltunga}
+    }
 
-    onComponentDidMount(){
-        console.log(this.getRandomImage);
-        this.setState({img: this.getRandomImage});
+    componentDidMount(){
+        this.getRandomImage();
     }
 
     getRandomImage(){
         const random = Math.random();
-        
+        console.log(random);
         if(random <= 0.33){
-            return trolltunga;
+            this.setState({img:trolltunga});
         }else if(random <= 0.66){
-            return cuppolone;
+            this.setState({img:cuppolone});
         }else{
-            return taipei101;
+            this.setState({img:taipei101});
         }
     }
 

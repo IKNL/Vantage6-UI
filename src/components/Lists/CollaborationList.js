@@ -34,10 +34,10 @@ class CollaborationList extends React.Component {
                     >
                         
                         <div className="ui header fluid align middle">{collab.name}</div>
-                        <div className="content ui three column grid">
-                            <div className="column fluid align middle">Nodes: {this.getNodeIds(collab.nodes)}</div>
-                            <div className="column fluid align middle">Organizations: {this.getOrgIds(collab.organizations)}</div>
-                            <div className="column fluid align middle right floated">Tasks completed: <div className="ui button">{collab.tasks.length}</div></div>
+                        <div className="content ui grid">
+                            <div className="four wide column fluid align middle">Nodes: {this.getNodeIds(collab.nodes)}</div>
+                            <div className="six wide column fluid align middle">Organizations: {this.getOrgIds(collab.organizations)}</div>
+                            <div className="two wide column fluid align middle right floated">Tasks completed: <div className="ui button">{collab.tasks.length}</div></div>
                         </div>
                     </div>            
                 );

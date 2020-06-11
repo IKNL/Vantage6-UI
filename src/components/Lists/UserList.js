@@ -8,6 +8,10 @@ class UserList extends React.Component {
         this.props.fetchAllContent();
     }
 
+    componentDidUpdate(){
+        this.props.fetchAllContent();
+    }
+
     userIcon(role){
         switch(role){
             case('admin'):
