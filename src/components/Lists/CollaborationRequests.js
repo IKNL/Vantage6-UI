@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchAllContent } from '../../actions';
 import NodeIcon from '../NodeIcon';
 import OrgIcon from '../OrgIcon';
+import CollaborationRequest from '../CollaborationRequest';
 
 class CollaborationRequests extends React.Component {
 
@@ -21,15 +22,7 @@ class CollaborationRequests extends React.Component {
         return this.props.collaborations.map((collab, props) => {
             if(collab.firstname !== null){
                 return (
-                    <div className="item" key={collab.id}>
-                        <div className="ui header fluid align middle">Request to join collaboration &nbsp;
-                            <div className="ui button">{collab.name}</div> with &nbsp; {this.getOrgIds(collab.organizations)}
-                            <div className="ui right floated">
-                                <button className="ui button green" onClick={() => console.log('accepting') /*this.props.acceptCollab(collab)*/}>Accept request</button>
-                                <button className="ui button red" onClick={() => console.log('rejecting') /*this.props.acceptCollab(collab)*/}>Reject request</button>                                
-                            </div>
-                        </div>
-                    </div>         
+                    <CollaborationRequest name={collab.name} id={collab.id} key={collab.id}/>
                 );
             }
         });
@@ -39,6 +32,7 @@ class CollaborationRequests extends React.Component {
         return (
             <div className="ui relaxed divided list">
                 {this.renderList()}
+                
             </div>
         );
     }

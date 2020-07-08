@@ -16,11 +16,17 @@ class Sidebar extends React.Component {
                 buttonName="HOME" 
                 buttonIcon="home icon" 
                 />
-                <SidebarButton 
+                {/* <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={1}
                 buttonName="USERS" 
                 buttonIcon="user icon" 
+                /> */}
+                <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={6}
+                buttonName="STUDIES" 
+                buttonIcon="search plus icon" 
                 />
                 <SidebarButton 
                 selectPage={selectPage} 
@@ -46,12 +52,7 @@ class Sidebar extends React.Component {
                 buttonName="NODES" 
                 buttonIcon="server icon" 
                 />
-                <SidebarButton 
-                selectPage={selectPage} 
-                pageIndex={6}
-                buttonName="COLLABORATIONS" 
-                buttonIcon="handshake icon" 
-                />
+
                 
             </div>
         );

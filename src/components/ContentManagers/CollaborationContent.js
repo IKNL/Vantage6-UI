@@ -7,21 +7,22 @@ const CollaborationContent = () => {
     return(
         <div>
                 <div className="content main-content">
-                    <div className="ui one column grid">
+                    <div className="ui two column grid">
                         <div className="column">
                             <h2 className="ui left aligned header">
-                            NEW REQUESTS
+                            ACTIVE COLLABORATIONS
                             </h2>
-                            <div className="ui raised fluid card">
-                            <CollaborationRequests />
-                            </div>
-
-                            <h2 className="ui left aligned header">
-                            COLLABORATIONS
-                            </h2>
-                            <div className="ui raised fluid card">
                             <CollaborationList />
-                            </div>
+                        </div>
+                        <div className="column">
+                            <h2 className="ui left floated header">
+                            WAITING FOR APPROVAL
+                            </h2>
+                            <button className="ui right floated secondary basic button">
+                            Create new collaboration <i className="ui small icon plus"></i>
+                            </button>
+
+                            <CollaborationRequests />
                         </div>
                     </div>
                 </div>

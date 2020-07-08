@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import { selectNode, selectPage, fetchOrgs } from '../actions';
 class OrgIcon extends React.Component {
 
-    state = { hover: false }
+    state = { hover: false, thisOrg: null }
 
     getOrgName(id){
         if(this.props.organizations.length <= 0){
@@ -16,10 +16,18 @@ class OrgIcon extends React.Component {
         }
     }
 
+    componentDidMount(){
+
+    }
+
+    getClassNames(){
+        return this.state.thisOrg ? "ui button green" : "ui button red";
+    }
+
     render(){
         return(
             <button
-            className="ui button"
+            className={this.getClassNames()}
             // onClick={() => {
             //     this.props.selectPage(5);
             //     }

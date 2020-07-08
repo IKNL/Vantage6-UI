@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { selectCollab, fetchAllContent } from '../../actions';
 import NodeIcon from '../NodeIcon';
 import OrgIcon from '../OrgIcon';
+import CollaborationActive from '../CollaborationActive';
 
 class CollaborationList extends React.Component {
 
@@ -27,19 +28,11 @@ class CollaborationList extends React.Component {
 
     renderList(){
         return this.props.collaborations.map((collab, props) => {
+            console.log(collab);
             if(collab.firstname !== null){
                 return (
-                    <div className="item" key={collab.id}
-                    onClick={() => this.props.selectCollab(collab)}
-                    >
-                        
-                        <div className="ui header fluid align middle">{collab.name}</div>
-                        <div className="content ui grid">
-                            <div className="four wide column fluid align middle">Nodes: {this.getNodeIds(collab.nodes)}</div>
-                            <div className="six wide column fluid align middle">Organizations: {this.getOrgIds(collab.organizations)}</div>
-                            <div className="two wide column fluid align middle right floated">Tasks completed: <div className="ui button">{collab.tasks.length}</div></div>
-                        </div>
-                    </div>            
+                    <CollaborationActive id={collab.id} name={collab.name} 
+                    organizations={this.getOrgIds(collab.organizations)} tasks={collab.tasks} />
                 );
             }
             
@@ -48,7 +41,7 @@ class CollaborationList extends React.Component {
 
     render(){
         return (
-            <div className="ui relaxed divided list">
+            <div className="ui very relaxed items">
                 {this.renderList()}
             </div>
         );
