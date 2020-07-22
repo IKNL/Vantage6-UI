@@ -9,6 +9,20 @@ class CollaborationRequest extends React.Component{
         this.setState({active: !this.state.active});
     }
 
+    renderOrgCircles(){
+            return this.props.organizations.map((org) => {
+                if(org.id !== 1){
+                    return (
+                        <i className="ui icon circle red"></i>
+                    );
+                }else{
+                    return (
+                        <i className="ui icon circle green"></i>
+                    );
+                }
+            });
+    }
+
     renderContent(){
         if(this.state.active){
             return (
@@ -34,23 +48,18 @@ class CollaborationRequest extends React.Component{
 
     render(){
         return (
-            <div className="ui raised fluid card" onClick={() => this.toggleContent()}>
-                        <div className="content vertical segment" >
+            <div className="ui raised fluid card">
+                        <div className="content vertical segment" onClick={() => this.toggleContent()}>
                                 <div className="ui left floated">
-                                <h2 class="ui header">
-                                    <i class="exchange icon"></i>
-                                    <div class="content">
-                                        {this.props.name}
-                                        <div class="sub header">{this.props.id}</div>
-                                    </div>
-                                </h2>
+                                    <h4 class="ui header" >
+                                        <div class="content">
+                                            {this.props.name}
+                                        </div>
+                                    </h4>
                                 </div>
                                 <div className="ui right floated">
                                     <div className="you-pill">You</div>
-                                    <i className="ui icon circle red"></i>
-                                    <i className="ui icon circle red"></i>
-                                    <i className="ui icon circle green"></i>
-                                    <i className="ui icon circle green"></i>
+                                    {this.renderOrgCircles()}
                                 </div>
                             
                         </div>    

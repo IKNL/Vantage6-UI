@@ -26,21 +26,26 @@ class CollaborationActive extends React.Component{
         }
     }
 
+    showTaskCount(){
+        if(!this.state.active){
+            return <div className="ui button tiny right floated collaboration-button">{this.props.tasks.length}</div>;
+        }else{
+            return null;
+        }
+    }
+
     render(){
         return (
             <div className="ui raised fluid card">
-                <div className="collaboration-block">
+                <div className="collaboration-block content vertical segment" onClick={() => this.toggleContent()}>
                     <div className="ui left floated">
-                    <h2 class="ui header">
-                        <i class="circle icon green"></i>
-                        <div class="content">
+                        <h4 class="ui header" >
+                            <i class="ui circle icon green"></i>
                             {this.props.name}
-                            <div class="sub header">{this.props.id}</div>
-                        </div>
-                    </h2>
+                        </h4>
                     </div>
-                    <i className="ui middle aligned right floated big angle down icon" onClick={() => this.toggleContent()}></i>
-                    <div className="ui button right floated collaboration-button">{this.props.tasks.length}</div>
+                    
+                    {this.showTaskCount()}
                 </div>    
                 
                 {this.renderContent()}

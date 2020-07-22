@@ -60,6 +60,8 @@ const MainContent = ({selectedPage}) => {
         return(
             <OrganizationContent />
         );
+    }else if(selectedPage === 9){
+        return <OrganizationContent />
     }
 
 

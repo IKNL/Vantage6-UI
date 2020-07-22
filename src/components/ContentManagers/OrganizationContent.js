@@ -1,17 +1,14 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { Field } from 'redux-form';
 
 import Statistic from '../Statistic';
 import { selectOrg, fetchAllContent } from '../../actions';
+import UserList from '../Lists/UserList';
 
 
 class OrganizationContent extends React.Component {
     
     componentDidMount(){
-        
-        this.props.fetchAllContent();
-
         if(!this.props.selectedOrg){
             this.props.selectOrg(1);
         }
@@ -39,33 +36,50 @@ class OrganizationContent extends React.Component {
                 org = org[0];
 
                 return(
-                    <div className="ui segment fluid">
-                        <h2 className="ui header">
-                            <i className="building icon"></i>
-                            <div className="content">
-                                {org.name}
-                                <div className="sub header">{org.domain}</div>
-                            </div>
-                        </h2>
-                    
-                        <h4 className="ui header"> <b>Address:</b></h4>
-                        <p className="ui sub header">
-                            {org.address1}, &nbsp; 
-                            {org.address2}, &nbsp;
-                            {org.country}</p>
-                        <div className="ui three column grid" style={{pointerEvents:"none"}}>
-                            <div className="ui column">
-                                <Statistic uiClasses="users icon" blockName="USERS" blockCount={org.users.length} />
-                            </div>
-                            <div className="ui column">
-                                <Statistic uiClasses="chart bar icon"  blockName="CREATED TASKS" blockCount={org.created_tasks.length} />
-                            </div>
-                            <div className="ui column">
-                                <Statistic uiClasses="handshake icon" blockName="COLLABORATIONS" blockCount={org.collaborations.length} />
+                    <div className="ui grid two column">
+                        <div className="ui column"></div>
+                        <div className="ui column">
+                            <div className="segment right floated">
+                                <button className="ui secondary basic button two wide column">
+                                        <i className="user circle icon left floated"></i>
+                                        <div class="">
+                                            Create new
+                                            <div class="">USER</div>
+                                        </div>
+                                </button>   
+                                <button className="ui secondary basic button two wide column">
+                                        <i className="chess icon left floated"></i>
+                                        <div className="">
+                                            Create new
+                                            <div className="">ROLE</div>
+                                        </div>
+                                </button> 
                             </div>
                         </div>
-
+                        <div className="ui row">
+                            <div className="ui column">
+                                <div className="ui segment">
+                                    <h2 className="ui header">
+                                        <i className="building icon"></i>
+                                        <div className="content">
+                                            {org.name}
+                                            <div className="sub header">{org.domain}</div>
+                                        </div>
+                                    </h2>
+                                
+                                    <h4 className="ui header"> <b>Address:</b></h4>
+                                    <p className="ui sub header">
+                                        {org.address1}, &nbsp; 
+                                        {org.address2}, &nbsp;
+                                        {org.country}
+                                    </p>
+                                </div>
+                            </div>
+                            <div className="ui column">
+                                    <UserList />
+                            </div>
                         </div>
+                    </div>
                 )
             }else{
                 return null;

@@ -16,26 +16,30 @@ class OrgIcon extends React.Component {
         }
     }
 
+    getOrgContact(id){
+        if(this.props.organizations.length <= 0){
+            this.props.fetchOrgs();
+        }
+        var org = this.props.organizations.filter(x => x.id === id);
+        if(org.length > 0){
+            return "Contact " + org[0].name + " through " + org[0].domain;
+        }
+    }
+
     componentDidMount(){
 
     }
 
     getClassNames(){
-        return this.state.thisOrg ? "ui button green" : "ui button red";
+        return this.state.thisOrg ? "ui icon button green" : "ui icon button red";
     }
 
     render(){
         return(
-            <button
-            className={this.getClassNames()}
-            // onClick={() => {
-            //     this.props.selectPage(5);
-            //     }
-            //}
-            >
-                <div><i className="ui building icon middle aligned"></i>{this.getOrgName(this.props.orgID)}</div>
-                
-            </button>
+            <div className={this.getClassNames()} data-tooltip={this.getOrgContact(this.props.orgID)}>
+                <i class="building icon"></i>
+                {this.getOrgName(this.props.orgID)}
+            </div>
         )
     }
     

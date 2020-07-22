@@ -10,6 +10,18 @@ export const login = (formValues) => async dispatch => {
     
 };
 
+export const register = (formValues) => async dispatch => {
+    const response = await jsonPlaceholder.post('./user', formValues);
+    dispatch({type: 'REGISTER', payload: response.data });
+};
+
+export const reset = (formValues) => async dispatch => {
+    const response = await jsonPlaceholder.get('./token/user', formValues);
+    dispatch({type: 'FORGOT_PASS', payload: response.data });
+};
+
+
+
 export const logOut = () => async dispatch => {
     dispatch({type: 'LOGIN', payload: undefined });
 };

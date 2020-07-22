@@ -2,7 +2,6 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 import { fetchAllContent } from '../../actions';
-import NodeIcon from '../NodeIcon';
 import OrgIcon from '../OrgIcon';
 import CollaborationRequest from '../CollaborationRequest';
 
@@ -20,9 +19,10 @@ class CollaborationRequests extends React.Component {
 
     renderList(){
         return this.props.collaborations.map((collab, props) => {
-            if(collab.firstname !== null){
+            if(collab.id !== null){
                 return (
-                    <CollaborationRequest name={collab.name} id={collab.id} key={collab.id}/>
+                    <CollaborationRequest name={collab.name} id={collab.id} key={collab.id}
+                    organizations={collab.organizations} />
                 );
             }
         });

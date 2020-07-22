@@ -37,7 +37,7 @@ body{
 }
 
 .login-panel{
-    margin-top: 100px;
+    margin-top: 40px;
 }
 .user-login{
     font-size: 14px;
@@ -183,6 +183,11 @@ body{
 
 .collaboration-block{
     line-height: 100%;
+    padding-bottom: 13px !important;
+}
+
+.collaboration-button{
+    margin: -5px 0px !important;
 }
 
 .you-pill{
