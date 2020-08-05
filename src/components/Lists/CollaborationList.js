@@ -32,7 +32,7 @@ class CollaborationList extends React.Component {
             if(collab.firstname !== null){
                 return (
                     <CollaborationActive id={collab.id} name={collab.name} 
-                    organizations={this.getOrgIds(collab.organizations)} tasks={collab.tasks} />
+                    organizations={this.getOrgIds(collab.organizations)} tasks={collab.tasks} key={collab.id} />
                 );
             }
             

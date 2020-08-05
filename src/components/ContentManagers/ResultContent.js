@@ -11,7 +11,7 @@ const ResultContent = () => {
                     <div className="ui two column grid">
                         <div className="column">
                         <h2 className="ui left aligned header">
-                        RESULTS
+                        LATEST RESULTS
                         </h2>
                             <div className="ui raised fluid card">
                             <ResultList listLength={15} />

@@ -12,8 +12,8 @@ export const fetchAllContent = () => async (dispatch, getState) => {
     orgs.forEach(org => dispatch(fetchOrg(org)));
 };
 
-export const fetchProfile = (userUrl) => async (dispatch) => {
-    await dispatch(fetchActiveUser(userUrl));
+export const fetchProfile = (userUrl) => {
+     fetchActiveUser(userUrl);
 }
 
 //SELECT A PAGE FROM THE SIDEBAR TO VIEW

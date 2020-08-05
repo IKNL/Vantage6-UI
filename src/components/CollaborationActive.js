@@ -9,6 +9,19 @@ class CollaborationActive extends React.Component{
         this.setState({active: !this.state.active});
     }
 
+    getCircle(){
+        
+        for (let index = 0; index < this.props.organizations.length; index++) {
+            const element = this.props.organizations[index];
+            // check for active state of organization/node here
+            if(!element){
+                return (<i className="ui circle icon red"></i>);
+            }
+            
+        }
+        return (<i className="ui circle icon green"></i>);
+    }
+
     renderContent(){
         if(this.state.active){
             return (
@@ -37,10 +50,10 @@ class CollaborationActive extends React.Component{
     render(){
         return (
             <div className="ui raised fluid card">
-                <div className="collaboration-block content vertical segment" onClick={() => this.toggleContent()}>
+                <div className="collaboration-block content vertical segment highlight-hover" onClick={() => this.toggleContent()}>
                     <div className="ui left floated">
-                        <h4 class="ui header" >
-                            <i class="ui circle icon green"></i>
+                        <h4 className="ui header" >
+                            {this.getCircle()}
                             {this.props.name}
                         </h4>
                     </div>

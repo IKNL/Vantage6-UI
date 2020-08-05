@@ -13,11 +13,11 @@ class CollaborationRequest extends React.Component{
             return this.props.organizations.map((org) => {
                 if(org.id !== 1){
                     return (
-                        <i className="ui icon circle red"></i>
+                        <i className="ui icon circle red" key={org.id}></i>
                     );
                 }else{
                     return (
-                        <i className="ui icon circle green"></i>
+                        <i className="ui icon circle green" key={org.id}></i>
                     );
                 }
             });
@@ -27,18 +27,20 @@ class CollaborationRequest extends React.Component{
         if(this.state.active){
             return (
                 <div className="ui vertical segment">   
-                <div className="ui placeholder vertical segment">
-                    <div className="ui icon header">
-                    <i className="pdf file outline icon"></i>
-                    No documents are listed for this collaboration.
-                    </div>
-                    <div className="ui primary button">Add Document</div>
-                </div>
-                <div className="ui vertical segment">
-                    <p>Algorithms: <span className="ui button">CoxPH</span><span className="ui button">LOGR</span></p>
+                    <div className="ui subheader">Description here</div>
                     <br />
-                    <button className="ui button red">Reject</button><button className="ui button green">Accept</button>
-                </div>
+                    <div className="ui placeholder vertical segment">
+                        <div className="ui icon header">
+                        <i className="pdf file outline icon"></i>
+                        No documents are listed for this collaboration.
+                        </div>
+                        <div className="ui primary button">Add Document</div>
+                    </div>
+                    <div className="ui vertical segment">
+                        <p>Algorithms: <span className="ui button">CoxPH</span><span className="ui button">LOGR</span></p>
+                        <br />
+                        <button className="ui button red">Reject</button><button className="ui button green">Accept</button>
+                    </div>
                 </div>
             );
         }else{
@@ -49,10 +51,10 @@ class CollaborationRequest extends React.Component{
     render(){
         return (
             <div className="ui raised fluid card">
-                        <div className="content vertical segment" onClick={() => this.toggleContent()}>
+                        <div className="content vertical segment highlight-hover" onClick={() => this.toggleContent()}>
                                 <div className="ui left floated">
-                                    <h4 class="ui header" >
-                                        <div class="content">
+                                    <h4 className="ui header" >
+                                        <div className="content">
                                             {this.props.name}
                                         </div>
                                     </h4>

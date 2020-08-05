@@ -63,6 +63,7 @@ const selectedPageReducer = (selectedPage = null, action) => {
 
 const setUserReducer = (user = null, action) => {
     if(action.type === 'FETCH_ACTIVE_USER'){
+        console.log("Active user set to: " + action.payload);
         return action.payload;
     }
     return user;

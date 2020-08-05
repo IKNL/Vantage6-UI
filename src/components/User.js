@@ -50,9 +50,9 @@ class User extends React.Component{
     render(){
         return (
             <div className="ui segment fluid">
-                        <h4 class="ui header" onClick={() => this.toggleContent()} >
+                        <h4 class="ui header highlight-hover" onClick={() => this.toggleContent()} >
                             {this.userIcon(this.props.roles)}
-                            <div class="content">
+                            <div class="content header">
                                 {this.props.firstname} {this.props.lastname} 
                                 <div class="sub header">{this.props.roles}</div>
                             </div>

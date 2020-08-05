@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Statistic from '../Statistic';
 import { selectOrg, fetchAllContent } from '../../actions';
 import UserList from '../Lists/UserList';
+import OrganizationList from '../Lists/OrganizationList';
 
 
 class OrganizationContent extends React.Component {
@@ -58,8 +59,8 @@ class OrganizationContent extends React.Component {
                         </div>
                         <div className="ui row">
                             <div className="ui column">
-                                <div className="ui segment">
-                                    <h2 className="ui header">
+                                    <OrganizationList />
+                                    {/* <h2 className="ui header">
                                         <i className="building icon"></i>
                                         <div className="content">
                                             {org.name}
@@ -72,8 +73,7 @@ class OrganizationContent extends React.Component {
                                         {org.address1}, &nbsp; 
                                         {org.address2}, &nbsp;
                                         {org.country}
-                                    </p>
-                                </div>
+                                    </p> */}
                             </div>
                             <div className="ui column">
                                     <UserList />

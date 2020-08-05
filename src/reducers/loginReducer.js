@@ -1,5 +1,5 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder';
-import { SetUserID } from '../actions';
+import { fetchProfile } from '../actions';
 
 export default (state = [], action) => {
     switch(action.type){
@@ -9,7 +9,8 @@ export default (state = [], action) => {
                 jsonPlaceholder.defaults.headers.post['authorization'] = `Bearer ${action.payload.access_token}`;
                 jsonPlaceholder.defaults.headers.patch['authorization'] = `Bearer ${action.payload.access_token}`;
             }
-
+            console.log(action.payload);
+            fetchProfile(action.payload.user_url);
             return [action.payload];
         default:
             return state;

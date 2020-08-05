@@ -10,17 +10,11 @@ class Sidebar extends React.Component {
     render(){
         return (
             <div className="Sidebar">
-                <SidebarButton 
+                {/* <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={0} 
                 buttonName="HOME" 
                 buttonIcon="home icon" 
-                />
-                {/* <SidebarButton 
-                selectPage={selectPage} 
-                pageIndex={1}
-                buttonName="USERS" 
-                buttonIcon="user icon" 
                 /> */}
                 <SidebarButton 
                 selectPage={selectPage} 
@@ -34,23 +28,11 @@ class Sidebar extends React.Component {
                 buttonName="COMPUTATIONS" 
                 buttonIcon="chart bar icon" 
                 />
-                {/* <SidebarButton 
-                selectPage={selectPage} 
-                pageIndex={3}
-                buttonName="ALGORITHMS" 
-                buttonIcon="superscript icon" 
-                /> */}
-                {/* <SidebarButton 
-                selectPage={selectPage} 
-                pageIndex={4}
-                buttonName="TASKS" 
-                buttonIcon="recycle icon" 
-                /> */}
                 <SidebarButton 
                 selectPage={selectPage} 
-                pageIndex={5}
-                buttonName="NODES" 
-                buttonIcon="server icon" 
+                pageIndex={1}
+                buttonName="MANAGE USERS" 
+                buttonIcon="user icon" 
                 />
                 <SidebarButton 
                 selectPage={selectPage} 

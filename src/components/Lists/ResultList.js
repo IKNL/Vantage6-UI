@@ -10,11 +10,12 @@ class ResultList extends React.Component {
 
     renderList(){
         
-        return this.props.results.slice(0, this.props.listLength).map((result, props) => {
+        return this.props.results.slice(0, this.props.listLength).map((result) => {
                 return (
                     <div className="item" key={result.id}
                     onClick={() => this.props.selectResult(result.id)}>
                         <div className="content">
+                            <div className="ui button basic secondary right floated">COLLAB NAME</div>
                             <div className="ui sub header user-name">
                                 {result.input} 
                             </div>

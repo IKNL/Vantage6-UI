@@ -20,6 +20,11 @@ export const reset = (formValues) => async dispatch => {
     dispatch({type: 'FORGOT_PASS', payload: response.data });
 };
 
+export const createCollaboration = (formValues) => async dispatch => {
+    // const response = await jsonPlaceholder.get('./token/user', formValues);
+    // dispatch({type: 'CREATED_COLLABORATION', payload: response.data });
+};
+
 
 
 export const logOut = () => async dispatch => {

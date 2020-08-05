@@ -11,6 +11,7 @@ import AlgorithmContent from './ContentManagers/AlgorithmContent';
 import CollaborationContent from './ContentManagers/CollaborationContent';
 import ProfileContent from './ContentManagers/ProfileContent';
 import OrganizationContent from './ContentManagers/OrganizationContent';
+import CreateCollabForm from './Forms/CreateCollabForm';
 
 const MainContent = ({selectedPage}) => {
 
@@ -62,18 +63,16 @@ const MainContent = ({selectedPage}) => {
         );
     }else if(selectedPage === 9){
         return <OrganizationContent />
+    }else if(selectedPage === 10){
+        return(
+            <CreateCollabForm /> 
+        );
     }
 
 
     return(
-        <div>
-            <div className="content main-content">
-                <StatisticBlock />
-                <ItemSummary />
-            </div>
-        </div>          
+        <CollaborationContent />
     );
-    
     
 };
 const mapStateToProps = (state) => {
