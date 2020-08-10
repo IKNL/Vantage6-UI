@@ -22,6 +22,12 @@ class Sidebar extends React.Component {
                 buttonName="STUDIES" 
                 buttonIcon="search plus icon" 
                 />
+                 <SidebarButton 
+                selectPage={selectPage} 
+                pageIndex={5}
+                buttonName="NODES" 
+                buttonIcon="server icon" 
+                />
                 <SidebarButton 
                 selectPage={selectPage} 
                 pageIndex={2}

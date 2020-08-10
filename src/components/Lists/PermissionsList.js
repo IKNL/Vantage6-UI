@@ -1,7 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import { selectUser, editUser, fetchAllContent, selectPage} from '../../actions';
-import { random } from 'lodash';
 
 class PermissionsList extends React.Component {
 
@@ -9,6 +8,7 @@ class PermissionsList extends React.Component {
         this.props.fetchAllContent();
     }
 
+    // placeholder dictionary until we hook this up to the DB
     permissions = [
         {name: "read", value: true},
         {name: "create", value: false},
@@ -18,6 +18,7 @@ class PermissionsList extends React.Component {
 
     returnPermissions(){
         return this.permissions.map((perm) => {
+            //randomly toggle buttons to visualize effects
             const rand = Math.random() > 0.66 ? true : false;
             if(rand === true){
                 return (
@@ -32,6 +33,7 @@ class PermissionsList extends React.Component {
         });
     }
 
+    // placeholder dictionary until we hook this up to the DB
     types = [
         {name: "owner", value: true},
         {name: "organization", value: false}
@@ -39,6 +41,7 @@ class PermissionsList extends React.Component {
 
     returnTypes(user){
         return this.types.map((type) => { // return user.types.map((type) => {}
+            //randomly toggle buttons to visualize effects
             const rand = Math.random() > 0.5 ? true : false; 
             if(rand === true){//type.value === true){
                 return (
@@ -55,36 +58,34 @@ class PermissionsList extends React.Component {
 
     renderList(){
         return this.props.users.map((user, props) => {
-            if(user.firstname !== null){
-                console.log(user);
                 return (
                     <div className="ui fluid segment">
-                    <div className="ui three column grid"> 
-                        <div className="ui column">    
-                            <h4 class="ui header">
-                                <i className="ui user icon"></i>
-                                <div class="content header">
-                                    {user.firstname} {user.lastname} 
-                                    <div class="sub header">{user.username}</div>
+                        <div className="ui three column grid"> 
+                            <div className="ui column">    
+                                <h4 class="ui header">
+                                    <i className="ui user icon"></i>
+                                    <div class="content header">
+                                        {user.firstname} {user.lastname} 
+                                        <div class="sub header">{user.username}</div>
+                                    </div>
+                                </h4>
+                            </div>
+                            <div className="ui column">    
+                                <div className="ui buttons">
+                                    {this.returnTypes()}
                                 </div>
-                            </h4>
-                        </div>
-                        <div className="ui column">    
-                            <div className="ui buttons">
-                                {this.returnTypes()}
+                            </div>
+                            <div className="ui column">    
+                                <div className="ui buttons">
+                                    {this.returnPermissions()}
+                                </div>
+                                
                             </div>
                         </div>
-                        <div className="ui column">    
-                            <div className="ui buttons">
-                                {this.returnPermissions()}
-                            </div>
-                            
-                        </div>
                     </div>
-                    </div>
-                );
-            }
-        });
+                    );
+                }
+            );
     }
 
     render(){
