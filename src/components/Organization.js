@@ -25,11 +25,11 @@ class Organization extends React.Component{
             <div className="ui raised fluid card highlight-hover">
                         <div className="content vertical segment">
                                 <div className="ui left floated" onClick={() => this.toggleContent()}>
-                                <h2 class="ui header" >
-                                    <i class="building icon"></i>
-                                    <div class="content">
+                                <h2 className="ui header" >
+                                    <i className="building icon"></i>
+                                    <div className="content">
                                         {this.props.name}
-                                        <div class="sub header">{this.props.id}</div>
+                                        <div className="sub header">{this.props.id}</div>
                                     </div>
                                 </h2>
                                 </div>

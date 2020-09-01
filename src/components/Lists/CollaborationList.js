@@ -26,13 +26,18 @@ class CollaborationList extends React.Component {
         });
     }
 
+    getAlgorithms(id){
+        return <span className="ui button">CoxPH</span>;
+    }
+
     renderList(){
         return this.props.collaborations.map((collab, props) => {
             console.log(collab);
             if(collab.firstname !== null){
                 return (
-                    <CollaborationActive id={collab.id} name={collab.name} 
-                    organizations={this.getOrgIds(collab.organizations)} tasks={collab.tasks} key={collab.id} />
+                    <CollaborationActive id={collab.id} name={collab.name} nodes={this.getNodeIds(collab.organizations)}
+                    organizations={this.getOrgIds(collab.organizations)} tasks={collab.tasks} key={collab.id} 
+                    algorithms={this.getAlgorithms(collab.id) } />
                 );
             }
             

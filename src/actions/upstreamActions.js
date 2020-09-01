@@ -5,10 +5,19 @@ export const editUserRemote = (editUser, formValues) => async dispatch => {
 };
 
 export const login = (formValues) => async dispatch => {
-    const response = await jsonPlaceholder.post('./token/user', formValues);
-    dispatch({type: 'LOGIN', payload: response.data });
+    await jsonPlaceholder.post('./token/user', formValues).then(response => {
+        dispatch({type: 'LOGIN', payload: response.data });
+    }).catch(error => {
+        dispatch({type: 'FAILED_LOGIN', payload: "Login failed: incorrect credentials" });
+    });
+        
+    
     
 };
+
+export const returningVisit = (storedData) => async dispatch => {
+    dispatch({type: 'LOGIN', payload: storedData });
+}
 
 export const register = (formValues) => async dispatch => {
     const response = await jsonPlaceholder.post('./user', formValues);
@@ -19,6 +28,10 @@ export const reset = (formValues) => async dispatch => {
     const response = await jsonPlaceholder.get('./token/user', formValues);
     dispatch({type: 'FORGOT_PASS', payload: response.data });
 };
+
+export const leaveCollaboration = (collabID, orgID) => async dispatch => {
+    //make orgID leave collabID
+}
 
 export const createCollaboration = (formValues) => async dispatch => {
     // const response = await jsonPlaceholder.get('./token/user', formValues);

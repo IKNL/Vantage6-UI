@@ -19,6 +19,8 @@ const selectedUserReducer = (selectedUser = null, action) => {
     return selectedUser;
 };
 
+
+
 const editUserReducer = (isEditing = null, action) => {
     if(action.type === 'EDIT_USER'){
         return action.payload;
@@ -76,6 +78,15 @@ const logoutReducer = (user = null, token = null, action) => {
     return user;
 }
 
+const failedLoginReducer = (loginFailed = "", action) => {
+    if(action.type === 'FAILED_LOGIN'){
+        console.log(action.payload);
+        return action.payload;
+    }
+
+    return loginFailed;
+}
+
 
 export default combineReducers({
     users: userReducer,
@@ -93,5 +104,6 @@ export default combineReducers({
     results: resultReducer,
     selectedResult: selectedResultReducer,
     form: formReducer,
-    user: setUserReducer
+    user: setUserReducer,
+    failedLogin: failedLoginReducer
 });

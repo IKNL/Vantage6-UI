@@ -11,12 +11,21 @@ class OrganizationList extends React.Component {
     }
 
     renderList(){
-        return this.props.organizations.map((org, props) => {
-            if(org.id !== null){
-                return (
-                    <Organization name={org.name} id={org.id} key={org.id}
-                    users={org.users} nodes={org.nodes} />
-                );
+        return this.props.organizations.map((org) => {
+            if(this.props.selectedOrg){
+                if(org.id === this.props.selectedOrg){
+                    return (
+                        <Organization name={org.name} id={org.id} key={org.id}
+                        users={org.users} nodes={org.nodes} />
+                    );
+                }
+            }else{
+                if(org.id !== null){
+                    return (
+                        <Organization name={org.name} id={org.id} key={org.id}
+                        users={org.users} nodes={org.nodes} />
+                    );
+                }
             }
         });
     }
@@ -31,7 +40,7 @@ class OrganizationList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { organizations: state.organizations };
+    return { organizations: state.organizations, selectedOrg: state.selectedOrg };
 }
 
 export default connect(mapStateToProps, { fetchAllContent })(OrganizationList);

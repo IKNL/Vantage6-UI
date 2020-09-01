@@ -11,12 +11,15 @@ class ProfileContent extends React.Component {
         var url = this.props.token[0].user_url;
         url = url.slice(4);
         if(this.props.user){
-            if(this.props.activeUser == this.props.user.id){
+            if(this.props.activeUser === this.props.user.id){
                 return;
             }
         }
 
-        this.props.fetchProfile('user/' + this.props.activeUser);
+        if(this.props.activeUser){
+            this.props.fetchProfile('user/' + this.props.activeUser);
+        }
+
         
     }
 

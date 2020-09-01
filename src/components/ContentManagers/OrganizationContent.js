@@ -10,8 +10,10 @@ import OrganizationList from '../Lists/OrganizationList';
 class OrganizationContent extends React.Component {
     
     componentDidMount(){
-        if(!this.props.selectedOrg){
+        if(!this.props.selectedOrg && this.props.ownOrg){
             this.props.selectOrg(1);
+        }else{
+            this.props.selectOrg(null);
         }
     }
 
@@ -29,9 +31,6 @@ class OrganizationContent extends React.Component {
 
     render(){
 
-        if(!this.props.selectedOrg){
-            return (<div>No organization selected</div>);
-        }else{
             var org = this.props.orgs.filter(x => x.id === this.props.selectedOrg);
             if(org){
                 org = org[0];
@@ -43,9 +42,9 @@ class OrganizationContent extends React.Component {
                             <div className="segment right floated">
                                 <button className="ui secondary basic button two wide column">
                                         <i className="user circle icon left floated"></i>
-                                        <div class="">
+                                        <div className="">
                                             Create new
-                                            <div class="">USER</div>
+                                            <div className="">USER</div>
                                         </div>
                                 </button>   
                                 <button className="ui secondary basic button two wide column">
@@ -60,20 +59,6 @@ class OrganizationContent extends React.Component {
                         <div className="ui row">
                             <div className="ui column">
                                     <OrganizationList />
-                                    {/* <h2 className="ui header">
-                                        <i className="building icon"></i>
-                                        <div className="content">
-                                            {org.name}
-                                            <div className="sub header">{org.domain}</div>
-                                        </div>
-                                    </h2>
-                                
-                                    <h4 className="ui header"> <b>Address:</b></h4>
-                                    <p className="ui sub header">
-                                        {org.address1}, &nbsp; 
-                                        {org.address2}, &nbsp;
-                                        {org.country}
-                                    </p> */}
                             </div>
                             <div className="ui column">
                                     <UserList />
@@ -81,9 +66,7 @@ class OrganizationContent extends React.Component {
                         </div>
                     </div>
                 )
-            }else{
-                return null;
-            }
+            
         }
     };
 }

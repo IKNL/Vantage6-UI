@@ -142,6 +142,13 @@ export const selectNode = (node) => {
     };
 };
 
+export const failedLogin = () => {
+    return{
+        type: 'FAILED_LOGIN',
+        payload:  true
+    };
+};
+
 // //LOGIN
 // export const logIn = ({uname, pword}) => async dispatch => {
     

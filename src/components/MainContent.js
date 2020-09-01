@@ -12,8 +12,9 @@ import CollaborationContent from './ContentManagers/CollaborationContent';
 import ProfileContent from './ContentManagers/ProfileContent';
 import OrganizationContent from './ContentManagers/OrganizationContent';
 import CreateCollabForm from './Forms/CreateCollabForm';
+import { selectOrg } from '../actions';
 
-const MainContent = ({selectedPage}) => {
+const MainContent = ({selectedPage, selectOrg}) => {
 
     if(selectedPage === 0){ //HOME
         return(
@@ -33,18 +34,6 @@ const MainContent = ({selectedPage}) => {
         return(
             <ResultContent />  
         );
-    }else if(selectedPage === 3){ //ALGORITHMS
-        return(
-            <AlgorithmContent />       
-        );
-    }else if(selectedPage === 4){ //TASKS
-        return(
-            <div>
-                <div className="content main-content">
-                    4 selected
-                </div>
-            </div>          
-        );
     }else if(selectedPage === 5){ //NODES
         return(
             <NodeContent /> 
@@ -53,22 +42,25 @@ const MainContent = ({selectedPage}) => {
         return(
             <CollaborationContent />
         );
-    }else if(selectedPage === 7){
+    }else if(selectedPage === 7){ // USER PROFILE
         return(
             <ProfileContent />
         );
-    }else if(selectedPage === 8){
+    }else if(selectedPage === 8){ // OWN ORGANIZATION PAGE
+        selectOrg(1);
         return(
+            <OrganizationContent ownOrg={true} />
+        );
+    }else if(selectedPage === 9){ // ORGANIZATION PAGE GENERAL
+        selectOrg(null);
+        return (
             <OrganizationContent />
         );
-    }else if(selectedPage === 9){
-        return <OrganizationContent />
-    }else if(selectedPage === 10){
+    }else if(selectedPage === 10){ // CREATE NEW COLLABORATION
         return(
             <CreateCollabForm /> 
         );
     }
-
 
     return(
         <CollaborationContent />
@@ -79,4 +71,4 @@ const mapStateToProps = (state) => {
     return { selectedPage: state.selectedPage }
 };
 
-export default connect(mapStateToProps)(MainContent);
+export default connect(mapStateToProps, {selectOrg})(MainContent);

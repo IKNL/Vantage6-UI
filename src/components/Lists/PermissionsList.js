@@ -42,8 +42,7 @@ class PermissionsList extends React.Component {
     returnTypes(user){
         return this.types.map((type) => { // return user.types.map((type) => {}
             //randomly toggle buttons to visualize effects
-            const rand = Math.random() > 0.5 ? true : false; 
-            if(rand === true){//type.value === true){
+            if(user.role === type.name){//type.value === true){
                 return (
                     <button className="ui button primary">{type.name}</button>
                 );
@@ -72,7 +71,7 @@ class PermissionsList extends React.Component {
                             </div>
                             <div className="ui column">    
                                 <div className="ui buttons">
-                                    {this.returnTypes()}
+                                    {this.returnTypes(user)}
                                 </div>
                             </div>
                             <div className="ui column">    

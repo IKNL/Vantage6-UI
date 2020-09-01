@@ -41,7 +41,7 @@ class OrgIcon extends React.Component {
 
     render(){
         return(
-            <div className={this.getClassNames()} data-tooltip={this.getOrgContact(this.props.orgID)}>
+            <div className={this.getClassNames()}>
                 <i className="building icon"></i>
                 {this.getOrgName(this.props.orgID)}
             </div>

@@ -7,7 +7,7 @@ const NodeDetail = ({selectedNode, nodes}) => {
     if (!selectedNode){
         return <div>Select a node</div>
     }
-    
+
     var showNode = nodes.filter(x => x.id === selectedNode);
     return (
         <div className="ui segment fluid">

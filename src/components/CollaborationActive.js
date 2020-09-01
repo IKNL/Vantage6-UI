@@ -1,5 +1,7 @@
 import React from 'react';
-
+import { connect } from 'react-redux';
+import { selectPage } from '../actions/';
+import { leaveCollaboration } from '../actions/upstreamActions';
 
 class CollaborationActive extends React.Component{
 
@@ -30,8 +32,16 @@ class CollaborationActive extends React.Component{
                 <div className="collaboration-block-content">
                     Organizations: {this.props.organizations}
                     <br /> <br /> 
-                    Computations: <div className="ui button yellow">{this.props.tasks.length}/{this.props.tasks.length}</div>
+                    Nodes: {this.props.nodes}
+                    <br /> <br /> 
+                    Algorithms: {this.props.algorithms}
+                    <br /> <br /> 
+                    Computations: <div className="ui button yellow" onClick={ () => this.props.selectPage(2) } >{this.props.tasks.length}/{this.props.tasks.length}</div>
+                    <br /><br />
+                    <button className="ui basic button">More details</button>
                 </div> 
+                <div className="ui divider"></div>
+                <button onClick={() => this.props.leaveCollaboration(null,null)} className="ui red button">Leave collaboration</button>
             </div>
             );
         }else{
@@ -41,7 +51,7 @@ class CollaborationActive extends React.Component{
 
     showTaskCount(){
         if(!this.state.active){
-            return <div className="ui button tiny right floated collaboration-button">{this.props.tasks.length}</div>;
+            return <button onClick={ () => this.props.selectPage(2) } className="ui button tiny right floated collaboration-button">{this.props.tasks.length}</button>;
         }else{
             return null;
         }
@@ -55,6 +65,7 @@ class CollaborationActive extends React.Component{
                         <h4 className="ui header" >
                             {this.getCircle()}
                             {this.props.name}
+                            &nbsp; (C-ID: {this.props.id})
                         </h4>
                     </div>
                     
@@ -68,4 +79,4 @@ class CollaborationActive extends React.Component{
 }
 
 
-export default CollaborationActive;
+export default connect(null, { selectPage, leaveCollaboration })(CollaborationActive);

@@ -1,4 +1,5 @@
 import React from 'react';
+import Cookies from 'universal-cookie';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
@@ -6,14 +7,20 @@ import trolltunga from '../images/trolltunga.jpg';
 import cuppolone from '../images/cuppolone.jpg';
 import taipei101 from '../images/taipei101.png';
 import logo from '../images/artboard1.png';
-import { login, register, reset } from '../actions/upstreamActions';
+import { login, register, reset, returningVisit } from '../actions/upstreamActions';
 
 class Login extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {img: trolltunga, registration: false, forgotPassword: false}
+        const cookies = new Cookies();
+        const tok = cookies.get('token', { path: '/'});
+        if(tok){
+            //this.props.returningVisit(tok);
+        }
     }
+
 
     componentDidMount(){
         this.getRandomImage();
@@ -29,7 +36,6 @@ class Login extends React.Component{
 
     getRandomImage(){
         const random = Math.random();
-        console.log(random);
         if(random <= 0.33){
             this.setState({img:trolltunga});
         }else if(random <= 0.66){
@@ -131,10 +137,12 @@ class Login extends React.Component{
                     <div className="login-overlay"></div>
                    
                     <div className="ui segment">
+                        
                         <img className="ui center aligned grid" width="105%" src={logo} alt="logo" />
                             <form onSubmit={this.props.handleSubmit(this.onSubmitLogin)} className="ui form error">
                                 <Field name="username" component={this.renderInput} label="Username" />
                                 <Field name="password" component={this.renderInput} label="Password" type="password" />
+                                <div className="ui">{ this.props.failedLogin + " " }</div>
                                 <button className="ui fluid large submit button">Log In</button>
                             </form> 
 
@@ -161,7 +169,7 @@ class Login extends React.Component{
 
 
 const mapStateToProps = (state) => {
-    return { token: state.token };
+    return { token: state.token, failedLogin: state.failedLogin };
 }
 
 

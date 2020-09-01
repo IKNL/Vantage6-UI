@@ -48,7 +48,7 @@ class Header extends React.Component {
             <img src={logo} height='60' alt="logo" />
             <div className="ui secondary menu header-items">
                 <div className="right menu">
-                    <a className="item" onClick={() => this.props.selectPage(7)} >My profile</a>
+                    <a className="item" onClick={() => this.props.selectPage(7)}>My profile</a>
                     <a className="item" onClick={() => this.props.selectPage(8)}>My organization</a>
                     {this.logOutModal()}
                 </div>
