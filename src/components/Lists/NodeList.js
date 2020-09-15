@@ -1,12 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { selectNode, fetchAllContent } from '../../actions';
+import { selectNode, fetchAllContent, fetchNodes } from '../../actions';
 
 class NodeList extends React.Component {
-
-    componentDidMount(){
-        this.props.fetchAllContent();
-    }
 
     nodeIcon(status){
         switch(status){
@@ -20,27 +16,42 @@ class NodeList extends React.Component {
 
     }
 
+    nodeItem(node){
+
+        let key = null;
+        if (node.api_key !== undefined){
+            console.log(`key=${node.api_key}`)
+            key = (
+                <div className="ui sub header user-role">
+                    Key: <b>{node.api_key}</b>
+                </div>
+            )
+        }
+
+        return (
+        <div className="item" key={node.id}
+        onClick={() => this.props.selectNode(node.id)}
+        >
+            {this.nodeIcon(node.status)}
+            <div className="content">
+                <div className="ui sub header user-name">
+                    {node.name}
+                </div>
+                {key}
+            </div>
+        </div>
+        )
+
+    }
+
     renderList(){
 
         return this.props.nodes.map((node, props) => {
+
             if(node.id !== null){
-                return (
-                    <div className="item" key={node.id}
-                    onClick={() => this.props.selectNode(node.id)}
-                    >
-                        {this.nodeIcon(node.status)}
-                        <div className="content">
-                            <div className="ui sub header user-name">
-                                {node.name} 
-                            </div>
-                            <div className="ui sub header user-role">
-                                {node.status}
-                            </div>
-                        </div>
-                    </div>            
-                );
+                return this.nodeItem(node)
             }
-            
+
         });
     }
 
@@ -54,7 +65,8 @@ class NodeList extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { nodes: state.nodes, selectedNode: state.selectedNode };
+    // return { nodes: state.nodes, selectedNode: state.selectedNode };
+    return { selectedNode: state.selectNode };
 }
 
-export default connect(mapStateToProps, { fetchAllContent, selectNode })(NodeList);
+export default connect(mapStateToProps, { fetchAllContent, selectNode, fetchNodes })(NodeList);

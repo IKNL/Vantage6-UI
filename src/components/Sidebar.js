@@ -4,50 +4,50 @@ import { connect } from 'react-redux';
 import { selectPage } from '../actions';
 import SidebarButton from './SidebarButton';
 class Sidebar extends React.Component {
-    
+
 
 
     render(){
         return (
             <div className="Sidebar">
-                {/* <SidebarButton 
-                selectPage={selectPage} 
-                pageIndex={0} 
-                buttonName="HOME" 
-                buttonIcon="home icon" 
+                {/* <SidebarButton
+                selectPage={selectPage}
+                pageIndex={0}
+                buttonName="HOME"
+                buttonIcon="home icon"
                 /> */}
-                <SidebarButton 
-                selectPage={selectPage} 
+                {/* <SidebarButton
+                selectPage={selectPage}
                 pageIndex={6}
-                buttonName="STUDIES" 
-                buttonIcon="search plus icon" 
-                />
-                 <SidebarButton 
-                selectPage={selectPage} 
+                buttonName="STUDIES"
+                buttonIcon="search plus icon"
+                /> */}
+                 <SidebarButton
+                selectPage={selectPage}
                 pageIndex={5}
-                buttonName="NODES" 
-                buttonIcon="server icon" 
+                buttonName="Nodes"
+                buttonIcon="server icon"
                 />
-                <SidebarButton 
-                selectPage={selectPage} 
+                {/* <SidebarButton
+                selectPage={selectPage}
                 pageIndex={2}
-                buttonName="COMPUTATIONS" 
-                buttonIcon="chart bar icon" 
+                buttonName="COMPUTATIONS"
+                buttonIcon="chart bar icon"
                 />
-                <SidebarButton 
-                selectPage={selectPage} 
+                <SidebarButton
+                selectPage={selectPage}
                 pageIndex={1}
-                buttonName="MANAGE USERS" 
-                buttonIcon="user icon" 
+                buttonName="MANAGE USERS"
+                buttonIcon="user icon"
                 />
-                <SidebarButton 
-                selectPage={selectPage} 
+                <SidebarButton
+                selectPage={selectPage}
                 pageIndex={9}
-                buttonName="ORGANIZATIONS" 
-                buttonIcon="building icon" 
-                />
+                buttonName="ORGANIZATIONS"
+                buttonIcon="building icon"
+                /> */}
 
-                
+
             </div>
         );
     }

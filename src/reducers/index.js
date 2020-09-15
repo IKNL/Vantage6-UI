@@ -9,6 +9,7 @@ import nodeReducer from './nodeReducer';
 import loginReducer from './loginReducer';
 import resultReducer from './resultReducer';
 import algorithmReducer from './algorithmReducer';
+import collaborationNodeReducer from './collaborationNodeReducer';
 
 
 
@@ -105,5 +106,6 @@ export default combineReducers({
     selectedResult: selectedResultReducer,
     form: formReducer,
     user: setUserReducer,
-    failedLogin: failedLoginReducer
+    failedLogin: failedLoginReducer,
+    collaborationNodes: collaborationNodeReducer
 });

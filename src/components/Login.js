@@ -94,7 +94,7 @@ class Login extends React.Component{
                                 <Field name="password" component={this.renderInput} label="Password" type="password" />
                                 <Field name="password-repeat" component={this.renderInput} label="Repeat password" type="password" />
                                 <button className="ui fluid large submit button">Register</button>
-                            </form> 
+                            </form>
 
                             <div className="divider"></div>
                             <br />
@@ -102,7 +102,7 @@ class Login extends React.Component{
                                 <button className="ui secondary basic button" onClick={() => this.toggleRegistration(false)}>Return to login</button>
 
                             </div>
-                            
+
                     </div>
                 </div>
             );
@@ -111,14 +111,14 @@ class Login extends React.Component{
                 <div className="nine wide column login-panel">
                     <img className="login-background-image" src={this.state.img} alt="background"/>
                     <div className="login-overlay"></div>
-                   
+
                     <div className="ui segment">
                         <img className="ui center aligned grid" width="105%" src={logo} alt="logo" />
                             <p>Request a new password by entering your username below</p>
                             <form onSubmit={this.props.handleSubmit(this.onSubmitForgotPass)} className="ui form error">
                                 <Field name="username" component={this.renderInput} label="Username" />
                                 <button className="ui fluid large submit button">Send email</button>
-                            </form> 
+                            </form>
 
                             <div className="divider"></div>
                             <br />
@@ -126,44 +126,45 @@ class Login extends React.Component{
                                 <button className="ui secondary basic button" onClick={() => this.togglePassForgot(false)}>Return to login</button>
 
                             </div>
-                            
+
                     </div>
                 </div>
             );
         }else{
             return (
-                <div className="nine wide column login-panel">
-                    <img className="login-background-image" src={this.state.img} alt="background"/>
+                <div className="ui middle aligned grid login-page ">
+                    <img className="login-background-image" src={this.state.img} alt="background" />
                     <div className="login-overlay"></div>
-                   
-                    <div className="ui segment">
-                        
-                        <img className="ui center aligned grid" width="105%" src={logo} alt="logo" />
+
+                    <div className="row centered">
+                        <div className="column six wide">
+                            <div className="ui container segment">
+
+
+                            <img className="ui centered image" src={logo} alt="vantage6 logo" />
                             <form onSubmit={this.props.handleSubmit(this.onSubmitLogin)} className="ui form error">
                                 <Field name="username" component={this.renderInput} label="Username" />
                                 <Field name="password" component={this.renderInput} label="Password" type="password" />
                                 <div className="ui">{ this.props.failedLogin + " " }</div>
                                 <button className="ui fluid large submit button">Log In</button>
-                            </form> 
+                            </form>
 
                             <div className="divider"></div>
                             <br />
                             <div className="ui fluid buttons">
                                 <button className="ui secondary basic button" onClick={() => this.toggleRegistration(true)} >Register new account</button>
                                 <div className="or"></div>
-                                {/* HTML gods please forgive me for the following button but it looks so much better when it's evenly partitioned*/}
                                 <button className="ui secondary basic button" onClick={() => this.togglePassForgot(true)}>
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
-                                    Forgot password 
-                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                                    Forgot password
                                 </button>
                             </div>
-                            
+                            </div>
+                        </div>
                     </div>
                 </div>
             );
         }
-        
+
         }
     }
 
@@ -193,4 +194,3 @@ const formWrapped = reduxForm({
 
 
 export default connect(mapStateToProps, { login, register, reset })(formWrapped);
-

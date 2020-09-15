@@ -1,5 +1,5 @@
 import jsonPlaceholder from '../apis/jsonPlaceholder';
-import _ from 'lodash';
+import _, { map } from 'lodash';
 
 export const fetchAllContent = () => async (dispatch, getState) => {
 
@@ -8,12 +8,14 @@ export const fetchAllContent = () => async (dispatch, getState) => {
     await dispatch(fetchCollaborations());
     await dispatch(fetchNodes());
     await dispatch(fetchOrgs());
+    await dispatch(fetchCollaborationNode(1))
+
     const orgs = _.uniq(_.map(getState().users, 'organization.id'));
     orgs.forEach(org => dispatch(fetchOrg(org)));
 };
 
-export const fetchProfile = (userUrl) => {
-     fetchActiveUser(userUrl);
+export let fetchProfile = (userUrl) => {
+    fetchActiveUser(userUrl);
 }
 
 //SELECT A PAGE FROM THE SIDEBAR TO VIEW
@@ -135,8 +137,15 @@ export const fetchNode = id => async dispatch => {
     dispatch({type: 'FETCH_NODE', payload: response.data });
 };
 
+//FETCH NODE INFORMATION PER COLLABORATION
+//this endpoint exposes information of non-owning nodes
+export const fetchCollaborationNode = id => async dispatch => {
+    const response = await jsonPlaceholder.get(`/collaboration/${id}/node`)
+    dispatch({type: 'FETCH_COLLABORATION_NODES', payload: response.data})
+}
+
 export const selectNode = (node) => {
-    return{
+    return {
         type: 'NODE_SELECTED',
         payload: node
     };
@@ -151,7 +160,7 @@ export const failedLogin = () => {
 
 // //LOGIN
 // export const logIn = ({uname, pword}) => async dispatch => {
-    
+
 //     console.log("Logging in");
 //     const response = await jsonPlaceholder.post(`/token/user`, {
 //             password: pword,

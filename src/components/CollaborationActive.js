@@ -12,14 +12,14 @@ class CollaborationActive extends React.Component{
     }
 
     getCircle(){
-        
+
         for (let index = 0; index < this.props.organizations.length; index++) {
             const element = this.props.organizations[index];
             // check for active state of organization/node here
             if(!element){
                 return (<i className="ui circle icon red"></i>);
             }
-            
+
         }
         return (<i className="ui circle icon green"></i>);
     }
@@ -28,18 +28,18 @@ class CollaborationActive extends React.Component{
         if(this.state.active){
             return (
             <div>
-                <div className="ui divider"></div> 
+                <div className="ui divider"></div>
                 <div className="collaboration-block-content">
                     Organizations: {this.props.organizations}
-                    <br /> <br /> 
-                    Nodes: {this.props.nodes}
-                    <br /> <br /> 
-                    Algorithms: {this.props.algorithms}
-                    <br /> <br /> 
+                    <br /> <br />
+                    Nodes: { this.props.nodes }
+                    <br /> <br />
+                    Algorithms: { this.props.algorithms }
+                    <br /> <br />
                     Computations: <div className="ui button yellow" onClick={ () => this.props.selectPage(2) } >{this.props.tasks.length}/{this.props.tasks.length}</div>
                     <br /><br />
                     <button className="ui basic button">More details</button>
-                </div> 
+                </div>
                 <div className="ui divider"></div>
                 <button onClick={() => this.props.leaveCollaboration(null,null)} className="ui red button">Leave collaboration</button>
             </div>
@@ -68,12 +68,12 @@ class CollaborationActive extends React.Component{
                             &nbsp; (C-ID: {this.props.id})
                         </h4>
                     </div>
-                    
+
                     {this.showTaskCount()}
-                </div>    
-                
+                </div>
+
                 {this.renderContent()}
-            </div>      
+            </div>
         );
     }
 }

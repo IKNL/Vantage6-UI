@@ -10,9 +10,6 @@ export const login = (formValues) => async dispatch => {
     }).catch(error => {
         dispatch({type: 'FAILED_LOGIN', payload: "Login failed: incorrect credentials" });
     });
-        
-    
-    
 };
 
 export const returningVisit = (storedData) => async dispatch => {
@@ -41,5 +38,5 @@ export const createCollaboration = (formValues) => async dispatch => {
 
 
 export const logOut = () => async dispatch => {
-    dispatch({type: 'LOGIN', payload: undefined });
+    dispatch({type: 'LOGIN', payload: null });
 };

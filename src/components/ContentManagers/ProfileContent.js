@@ -2,25 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { Field, reduxForm } from 'redux-form';
 
-import { fetchProfile, editUser } from '../../actions';
+import { fetchActiveUser, editUser } from '../../actions';
 
 
 class ProfileContent extends React.Component {
-    
+
     componentDidMount(){
-        var url = this.props.token[0].user_url;
-        url = url.slice(4);
-        if(this.props.user){
-            if(this.props.activeUser === this.props.user.id){
-                return;
-            }
-        }
-
-        if(this.props.activeUser){
-            this.props.fetchProfile('user/' + this.props.activeUser);
-        }
-
-        
+        this.props.fetchActiveUser(this.props.token.user_url);
     }
 
 
@@ -58,7 +46,7 @@ class ProfileContent extends React.Component {
         }else if(this.props.isEditing){
             return(
                 <div className="ui segment fluid">
-                   
+
                    <div className="content">
                            <h3 className="ui header">
                                Editing user {this.props.user.username}
@@ -70,48 +58,48 @@ class ProfileContent extends React.Component {
                      <form onSubmit={this.props.handleSubmit(this.onSubmit)} className="ui form error">
 
                             <div className="field">
-                                <Field name="firstname" placeholder={this.props.user.firstname} 
+                                <Field name="firstname" placeholder={this.props.user.firstname}
                                 component={this.renderInput} value={this.props.user.firstname}  label="First name" readOnly />
                             </div>
                             <div className="field">
-                                <Field name="lastname" placeholder={this.props.user.lastname} 
+                                <Field name="lastname" placeholder={this.props.user.lastname}
                                 component={this.renderInput} label="Last name" readOnly />
                             </div>
                             <div className="field">
-                                <Field name="username" placeholder={this.props.user.username} 
+                                <Field name="username" placeholder={this.props.user.username}
                                 component={this.renderInput} label="Username" readOnly />
                             </div>
 
                             <div className="ui three fields">
                                 <div className="field">
-                                    <Field name="role" placeholder={this.props.user.role} 
+                                    <Field name="role" placeholder={this.props.user.role}
                                     component={this.renderInput} label="Role" readOnly />
                                 </div>
                                 <div className="field">
-                                    <Field name="type" placeholder={this.props.user.type} 
+                                    <Field name="type" placeholder={this.props.user.type}
                                     component={this.renderInput} label="Type" readOnly />
                                 </div>
                                 <div className="field">
-                                    <Field name="status" placeholder={this.props.user.status} 
+                                    <Field name="status" placeholder={this.props.user.status}
                                     component={this.renderInput} label="Status" readOnly />
                                 </div>
                             </div>
                             <button className="ui button green"
                         onClick={() => this.props.editUser(null)}>Save changes</button>
                         <button className="ui button red" onClick={() => this.props.editUser(null)}>Discard changes</button>
-                   </form> 
-                        
+                   </form>
+
                     </div>
-       
-                   
 
 
-               </div>   
+
+
+               </div>
            )
         }else{
             return(
                 <div className="ui segment fluid">
-                   
+
                    <div className="content">
                     	<h2 className="ui header">
                             <i className="user icon"></i>
@@ -150,15 +138,15 @@ class ProfileContent extends React.Component {
                                 <input placeholder={this.props.user.status} readOnly type="text" />
                                 </div>
                             </div>
-                        
+
                     </div>
-       
+
                    <div className="ui divider"></div>
                    <button className="ui button primary"
                    onClick={() => this.props.editUser(this.props.activeUser)}>Edit profile</button>
                    <button className="ui button red"
                    onClick={() => this.props.editUser(this.props.activeUser)}>Delete profile</button>
-               </div>   
+               </div>
            )
         }
         };
@@ -191,4 +179,4 @@ const formWrapped = reduxForm({
     validate: validate
 })(ProfileContent);
 
-export default connect(mapStateToProps, { fetchProfile, editUser })(formWrapped);
+export default connect(mapStateToProps, { fetchActiveUser, editUser })(formWrapped);

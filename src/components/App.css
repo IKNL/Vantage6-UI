@@ -1,5 +1,5 @@
 /* Colorscheme */
-/* 
+/*
 #11B5E9; light blue
 #0f497b; Dark blue
 #f9f9f9; White
@@ -9,10 +9,10 @@
 */
 
 body{
-    padding-top:60px;
     font-family: 'Arial', sans-serif;
     margin:0;
     background-color: #e5e5e5;
+    color:#444;
 }
 
 
@@ -37,7 +37,12 @@ body{
 }
 
 .login-panel{
-    margin-top: 40px;
+    /* margin-top: 0px; */
+    /* border:1px red solid; */
+}
+.login-page{
+    height: 100vh;
+    width: 100%;
 }
 .user-login{
     font-size: 14px;
@@ -68,7 +73,7 @@ body{
     height: 100vh;
     z-index: -1;
     background-color: #0f497b;
-    opacity: 0.5;
+    opacity: 0;
 }
 
 #username{
@@ -94,7 +99,7 @@ body{
 }
 
 .Sidebar{
-    position: fixed; 
+    position: fixed;
     top: 60px;
     left: 0px;
     width: 60px;
@@ -138,7 +143,7 @@ body{
 }
 .Sidebar i {
     color: white !important;
-    font-size: 24px;  
+    font-size: 24px;
     margin-left: 10px;
     margin-right: 10px;
     display: inline-block;
@@ -161,6 +166,14 @@ body{
 
 .item:hover{
     cursor: pointer;
+}
+
+.v6-blue{
+    color: #0f497b !important;
+}
+
+.v6-orange{
+    color: #f9ac23 !important;
 }
 
 .user-name{
@@ -207,6 +220,7 @@ body{
     color: #f9ac23 !important;
     cursor: pointer;
 }
+
 
 @media(max-width: 1200px){
     h2.ui.header {

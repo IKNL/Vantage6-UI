@@ -6,26 +6,38 @@ import Header from './Header';
 import Sidebar from './Sidebar';
 import MainContent from './MainContent';
 import Login from './Login';
+import { isEmpty } from 'lodash';
+import jsonPlaceholder from '../apis/jsonPlaceholder';
+import { fetchProfile } from '../actions';
 
 class App extends React.Component {
 
+    constructor(props){
+        super(props);
+
+        if (!isEmpty(props.token)){
+            jsonPlaceholder.defaults.headers.common['authorization'] = `Bearer ${props.token.access_token}`;
+        }
+
+    }
+
     render(){
-        if(this.props.token[0] !== undefined){
+        if(!isEmpty(this.props.token)){
             return( <div>
                 <Header />
                 <Sidebar />
                 <div className="content main-content">
                     <MainContent />
                 </div>
-            </div>          
-            );      
+            </div>
+            );
         }else{
             return( <div>
                 <div className="ui centered grid container">
-                    <Login />    
+                    <Login />
                 </div>
-            </div>          
-            );  
+            </div>
+            );
         }
     };
 }
@@ -35,5 +47,3 @@ const mapStateToProps = (state) => {
 }
 
 export default connect(mapStateToProps)(App);
-
-
