@@ -24,7 +24,7 @@ const MainContent = ({selectedPage, selectOrg}) => {
                     <StatisticBlock />
                     <ItemSummary />
                 </div>
-            </div>          
+            </div>
         );
     }else if(selectedPage === 1){ //USERS
         return(
@@ -32,11 +32,11 @@ const MainContent = ({selectedPage, selectOrg}) => {
         );
     }else if(selectedPage === 2){ //COMPUTATIONS
         return(
-            <ResultContent />  
+            <ResultContent />
         );
     }else if(selectedPage === 5){ //NODES
         return(
-            <NodeContent /> 
+            <NodeContent />
         );
     }else if(selectedPage === 6){ //COLLABORATIONS
         return(
@@ -58,14 +58,14 @@ const MainContent = ({selectedPage, selectOrg}) => {
         );
     }else if(selectedPage === 10){ // CREATE NEW COLLABORATION
         return(
-            <CreateCollabForm /> 
+            <CreateCollabForm />
         );
     }
 
     return(
-        <CollaborationContent />
+        <NodeContent />
     );
-    
+
 };
 const mapStateToProps = (state) => {
     return { selectedPage: state.selectedPage }

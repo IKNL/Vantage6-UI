@@ -38,5 +38,6 @@ export const createCollaboration = (formValues) => async dispatch => {
 
 
 export const logOut = () => async dispatch => {
-    dispatch({type: 'LOGIN', payload: null });
+    // dispatch({type: 'LOGIN', payload: null });
+    dispatch({type: 'USER_LOGOUT', payload: null})
 };

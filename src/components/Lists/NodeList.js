@@ -17,27 +17,24 @@ class NodeList extends React.Component {
     }
 
     nodeItem(node){
-
-        let key = null;
-        if (node.api_key !== undefined){
-            console.log(`key=${node.api_key}`)
-            key = (
-                <div className="ui sub header user-role">
-                    Key: <b>{node.api_key}</b>
-                </div>
-            )
+        var style = "";
+        console.log(`selected node = ${this.props.selectedNode}, node = ${node.id}`)
+        if (this.props.selectedNode !== undefined){
+            if (this.props.selectedNode === node.id){
+                style = "active"
+            }
         }
 
         return (
-        <div className="item" key={node.id}
-        onClick={() => this.props.selectNode(node.id)}
-        >
+        <div className={`item ${style}`} key={node.id} onClick={() => this.props.selectNode(node.id)}>
             {this.nodeIcon(node.status)}
             <div className="content">
-                <div className="ui sub header user-name">
+                <div className="ui sub header v6-blue">
                     {node.name}
                 </div>
-                {key}
+                <div className="ui sub header">
+                    {node.status}
+                </div>
             </div>
         </div>
         )
@@ -57,7 +54,7 @@ class NodeList extends React.Component {
 
     render(){
         return (
-            <div className="ui relaxed divided list">
+            <div className="ui relaxed divided list selection">
                 {this.renderList()}
             </div>
         );
@@ -66,7 +63,7 @@ class NodeList extends React.Component {
 
 const mapStateToProps = (state) => {
     // return { nodes: state.nodes, selectedNode: state.selectedNode };
-    return { selectedNode: state.selectNode };
+    return { selectedNode: state.selectedNode };
 }
 
 export default connect(mapStateToProps, { fetchAllContent, selectNode, fetchNodes })(NodeList);

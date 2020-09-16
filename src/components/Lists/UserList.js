@@ -14,9 +14,10 @@ class UserList extends React.Component {
             if(user.firstname !== null){
                 console.log(user);
                 return (
-                    <User id={user.id} firstname={user.firstname} lastname={user.lastname} 
-                    roles={user.roles} extras={user.roles} contact={user.username}
-                    selectUser={this.props.selectUser} selectPage={this.props.selectPage} />
+                    <User
+                    user={user}
+                    selectUser={this.props.selectUser}
+                    selectPage={this.props.selectPage} />
                 );
             }
         });
@@ -28,8 +29,8 @@ class UserList extends React.Component {
                 <div className="ui list">
                     {this.renderList()}
                 </div>
-                
-            </div>  
+
+            </div>
         );
     }
 }

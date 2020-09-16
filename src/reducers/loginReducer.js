@@ -1,7 +1,7 @@
 import Cookies from 'universal-cookie';
 
 import jsonPlaceholder from '../apis/jsonPlaceholder';
-import { fetchProfile } from '../actions';
+import { fetchActiveUser } from '../actions';
 
 
 export default (state = {}, action) => {
@@ -12,8 +12,9 @@ export default (state = {}, action) => {
         case 'LOGIN':
 
             if(action.payload != null){
+                fetchActiveUser(action.payload.user_url);
                 jsonPlaceholder.defaults.headers.common['authorization'] = `Bearer ${action.payload.access_token}`;
-                fetchProfile(action.payload.user_url);
+
             }
 
             return action.payload;

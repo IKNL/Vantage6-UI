@@ -4,11 +4,12 @@ import { connect } from 'react-redux';
 import Statistic from '../Statistic';
 import { selectOrg, fetchAllContent } from '../../actions';
 import UserList from '../Lists/UserList';
+import Organization from '../Organization'
 import OrganizationList from '../Lists/OrganizationList';
 
 
 class OrganizationContent extends React.Component {
-    
+
     componentDidMount(){
         if(!this.props.selectedOrg && this.props.ownOrg){
             this.props.selectOrg(1);
@@ -37,7 +38,7 @@ class OrganizationContent extends React.Component {
 
                 return(
                     <div className="ui grid two column">
-                        <div className="ui column"></div>
+                        {/* <div className="ui column"></div>
                         <div className="ui column">
                             <div className="segment right floated">
                                 <button className="ui secondary basic button two wide column">
@@ -46,27 +47,29 @@ class OrganizationContent extends React.Component {
                                             Create new
                                             <div className="">USER</div>
                                         </div>
-                                </button>   
+                                </button>
                                 <button className="ui secondary basic button two wide column">
                                         <i className="chess icon left floated"></i>
                                         <div className="">
                                             Create new
                                             <div className="">ROLE</div>
                                         </div>
-                                </button> 
+                                </button>
                             </div>
-                        </div>
+                        </div> */}
                         <div className="ui row">
                             <div className="ui column">
-                                    <OrganizationList />
+                                <h2 className="ui left aligned header">Organization</h2>
+                                <Organization />
                             </div>
                             <div className="ui column">
-                                    <UserList />
+                                <h2 className="ui left aligned header">Users</h2>
+                                <UserList />
                             </div>
                         </div>
                     </div>
                 )
-            
+
         }
     };
 }

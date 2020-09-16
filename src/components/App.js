@@ -8,7 +8,6 @@ import MainContent from './MainContent';
 import Login from './Login';
 import { isEmpty } from 'lodash';
 import jsonPlaceholder from '../apis/jsonPlaceholder';
-import { fetchProfile } from '../actions';
 
 class App extends React.Component {
 

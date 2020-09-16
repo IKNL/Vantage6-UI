@@ -26,7 +26,7 @@ body{
     color: #f9f9f9;
     line-height: 60px;
     font-size: 36px;
-    padding-left: 80px;
+    padding-left: 10px;
     box-shadow: 0px 1px 3px rgba(0,0,0,0.3);
 }
 
@@ -63,6 +63,8 @@ body{
     min-height: 100vh;
     z-index: -2;
     background-size: cover;
+    margin:0;
+    padding:0 !important;
 }
 
 .login-overlay{
@@ -71,6 +73,7 @@ body{
     left: 0;
     width: 100vw;
     height: 100vh;
+    padding:0 !important;
     z-index: -1;
     background-color: #0f497b;
     opacity: 0;
@@ -172,8 +175,16 @@ body{
     color: #0f497b !important;
 }
 
+.v6-blue-bg{
+    background-color: #0f497b !important;
+    color: white !important;
+}
+
 .v6-orange{
     color: #f9ac23 !important;
+}
+.v6-orange-bg{
+    background-color: #f9ac23 !important;
 }
 
 .user-name{
@@ -214,6 +225,10 @@ body{
     width: 50px;
 
     line-height: 15px;
+}
+.pub-key{
+    overflow-wrap: break-word;
+    width:100%;
 }
 
 .highlight-hover:hover .header{

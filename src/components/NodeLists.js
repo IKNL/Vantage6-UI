@@ -26,8 +26,10 @@ class NodeLists extends React.Component {
         return (
             <div>
                 <h2 className="ui left aligned header">Your nodes</h2>
-                <div className="ui raised fluid card">
-                    <NodeList nodes={ this.props.nodes } />
+                <div className="ui segment">
+                    <NodeList
+                        nodes={ this.props.nodes }
+                    />
                 </div>
                 {/* <h1>Collaboration 1 nodes</h1>
                 <div className="ui raised fluid card">
@@ -39,7 +41,7 @@ class NodeLists extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-    return { nodes: state.nodes, collaborationNode: state.collaborationNodes, selectedNode: state.selectedNode };
+    return { nodes: state.nodes, collaborationNode: state.collaborationNodes };
 }
 
 export default connect(mapStateToProps, { fetchNodes, fetchCollaborationNode })(NodeLists);

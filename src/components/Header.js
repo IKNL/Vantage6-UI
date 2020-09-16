@@ -1,14 +1,22 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './Header.css';
 import logo from '../images/artboard1.png'
-import { selectPage } from '../actions';
+import { selectPage, fetchActiveUser } from '../actions';
 import { logOut } from '../actions/upstreamActions';
+import { isEmpty } from 'lodash';
 
 class Header extends React.Component {
 
-    state = {confirmingLogOut: false};
+
+
+    constructor(props){
+        super(props);
+        this.state = {confirmingLogOut: false, loading: true};
+        console.log(props.token.user_url)
+        props.fetchActiveUser(props.token.user_url);
+    }
+
 
     fetchUser(){
         if(this.props.user){
@@ -42,24 +50,28 @@ class Header extends React.Component {
 
     cancelLogout(){this.setState({confirmingLogOut: false})};
 
+
     render(){
+        console.log(this.state.loading);
+        var username = (isEmpty(this.props.user)) ? "..." : this.props.user.username
+
         return(
         <div className="Header">
             <img src={logo} height='60' alt="logo" />
             <div className="ui secondary menu header-items">
                 <div className="right menu">
-                    <a className="item" onClick={() => this.props.selectPage(7)}>My profile</a>
-                    <a className="item" onClick={() => this.props.selectPage(8)}>My organization</a>
+                    <a className="item" onClick={() => this.props.selectPage(7)}>{username}</a>
+                    <a className="item" onClick={() => this.props.selectPage(8)}>My Organization</a>
                     {this.logOutModal()}
                 </div>
             </div>
         </div>);
-    } 
+    }
 };
 
 const mapStateToProps = (state) => {
-    return { user: state.user };
+    return { user: state.user, token: state.token };
 }
 
 
-export default connect(mapStateToProps, { selectPage, logOut })(Header);
+export default connect(mapStateToProps, { selectPage, logOut, fetchActiveUser })(Header);

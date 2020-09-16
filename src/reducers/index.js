@@ -10,6 +10,7 @@ import loginReducer from './loginReducer';
 import resultReducer from './resultReducer';
 import algorithmReducer from './algorithmReducer';
 import collaborationNodeReducer from './collaborationNodeReducer';
+import organizationReducer from './organizationReducer'
 
 
 
@@ -88,10 +89,10 @@ const failedLoginReducer = (loginFailed = "", action) => {
     return loginFailed;
 }
 
-
-export default combineReducers({
+const appReducer = combineReducers({
     users: userReducer,
     organizations: orgReducer,
+    organization: organizationReducer,
     selectedOrg: selectedOrgReducer,
     selectedUser: selectedUserReducer,
     isEditing: editUserReducer,
@@ -109,3 +110,13 @@ export default combineReducers({
     failedLogin: failedLoginReducer,
     collaborationNodes: collaborationNodeReducer
 });
+
+const rootReducer = (state, action) => {
+    if (action.type === 'USER_LOGOUT')
+    {
+        state = undefined;
+    }
+    return appReducer(state, action);
+}
+
+export default rootReducer;

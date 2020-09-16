@@ -5,7 +5,7 @@ import { Field, reduxForm } from 'redux-form';
 
 import trolltunga from '../images/trolltunga.jpg';
 import cuppolone from '../images/cuppolone.jpg';
-import taipei101 from '../images/taipei101.png';
+import taipei101 from '../images/taipei101.jpg';
 import logo from '../images/artboard1.png';
 import { login, register, reset, returningVisit } from '../actions/upstreamActions';
 
@@ -151,13 +151,13 @@ class Login extends React.Component{
 
                             <div className="divider"></div>
                             <br />
-                            <div className="ui fluid buttons">
+                            {/* <div className="ui fluid buttons">
                                 <button className="ui secondary basic button" onClick={() => this.toggleRegistration(true)} >Register new account</button>
                                 <div className="or"></div>
                                 <button className="ui secondary basic button" onClick={() => this.togglePassForgot(true)}>
                                     Forgot password
                                 </button>
-                            </div>
+                            </div> */}
                             </div>
                         </div>
                     </div>

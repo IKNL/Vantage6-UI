@@ -11,7 +11,6 @@ class ProfileContent extends React.Component {
         this.props.fetchActiveUser(this.props.token.user_url);
     }
 
-
     renderError({ error, touched }){
         if(touched && error){
             return (
@@ -42,7 +41,7 @@ class ProfileContent extends React.Component {
     render(){
 
         if(!this.props.user){
-            return (<div>No user selected</div>);
+            return (<div className="ui segment">No user selected</div>);
         }else if(this.props.isEditing){
             return(
                 <div className="ui segment fluid">
@@ -98,55 +97,68 @@ class ProfileContent extends React.Component {
            )
         }else{
             return(
-                <div className="ui segment fluid">
-
-                   <div className="content">
-                    	<h2 className="ui header">
-                            <i className="user icon"></i>
-                            <div className="content">
-                                {this.props.user.firstname}&nbsp;{this.props.user.lastname}
-                                <div className="sub header">{this.props.user.username}</div>
-                            </div>
-                        </h2>
-                   </div>
-                   <br></br>
-                   <div className="ui form">
-                            <div className="field">
-                            <label>First Name</label>
-                            <input placeholder={this.props.user.firstname} readOnly type="text" />
-                            </div>
-                            <div className="field">
-                            <label>Last Name</label>
-                            <input placeholder={this.props.user.lastname} readOnly type="text" />
-                            </div>
-                            <div className="field">
-                            <label>Username</label>
-                            <input placeholder={this.props.user.username} readOnly type="text" />
-                            </div>
-
-                            <div className="ui three fields">
-                                <div className="field">
-                                <label>Role</label>
-                                <input placeholder={this.props.user.role} readOnly type="text" />
-                                </div>
-                                <div className="field">
-                                <label>Type</label>
-                                <input placeholder={this.props.user.type} readOnly type="text" />
-                                </div>
-                                <div className="field">
-                                <label>Status</label>
-                                <input placeholder={this.props.user.status} readOnly type="text" />
-                                </div>
-                            </div>
-
+                <div>
+                    <div className="ui warning message">
+                        <div className="header">
+                            Read only
+                        </div>
+                        Currently it is not possible to update your info through the UI.
                     </div>
+                    <div className="ui segment fluid">
+                        <div class="ui grid">
+                            <div class="six wide column">
+                                <div className="ui placeholder">
+                                    <div className="image square"></div>
+                                </div>
+                            </div>
+                            <div class="ten wide column">
+                                <h2 className="ui header">
+                                    <div className="content">
+                                        {this.props.user.firstname}&nbsp;{this.props.user.lastname}
+                                        <div className="sub header">{this.props.user.username}</div>
+                                    </div>
+                                </h2>
 
-                   <div className="ui divider"></div>
-                   <button className="ui button primary"
-                   onClick={() => this.props.editUser(this.props.activeUser)}>Edit profile</button>
-                   <button className="ui button red"
-                   onClick={() => this.props.editUser(this.props.activeUser)}>Delete profile</button>
-               </div>
+                                <div className="ui form">
+                                    <div className="field">
+                                        <label>First Name</label>
+                                        <input placeholder={this.props.user.firstname} readOnly type="text" />
+                                    </div>
+                                    <div className="field">
+                                        <label>Last Name</label>
+                                        <input placeholder={this.props.user.lastname} readOnly type="text" />
+                                    </div>
+                                    <div className="field">
+                                        <label>Username</label>
+                                        <input placeholder={this.props.user.username} readOnly type="text" />
+                                    </div>
+
+                                    <div className="ui three fields">
+                                        <div className="field">
+                                            <label>Roles</label>
+                                            <input placeholder={this.props.user.role} readOnly type="text" />
+                                        </div>
+                                        <div className="field">
+                                            <label>Type</label>
+                                            <input placeholder={this.props.user.type} readOnly type="text" />
+                                        </div>
+                                        <div className="field">
+                                            <label>Status</label>
+                                            <input placeholder={this.props.user.status} readOnly type="text" />
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                        {/* <div className="ui divider"></div> */}
+                        {/* <button className="ui button primary"
+                        onClick={() => this.props.editUser(this.props.activeUser)}>Edit profile</button>
+                        <button className="ui button red"
+                        onClick={() => this.props.editUser(this.props.activeUser)}>Delete profile</button> */}
+                    </div>
+                </div>
            )
         }
         };

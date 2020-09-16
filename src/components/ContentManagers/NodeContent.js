@@ -13,7 +13,7 @@ const NodeContent = () => {
                     </div>
                     <div className="column">
                     <h2 className="ui left aligned header">
-                        SELECTED NODE
+                        Selected node
                     </h2>
                     <NodeDetail />
                     </div>
