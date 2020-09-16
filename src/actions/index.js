@@ -3,12 +3,12 @@ import _, { map } from 'lodash';
 
 export const fetchAllContent = () => async (dispatch, getState) => {
 
-    await dispatch(fetchUsers());
-    await dispatch(fetchResults());
-    await dispatch(fetchCollaborations());
-    await dispatch(fetchNodes());
-    await dispatch(fetchOrgs());
-    await dispatch(fetchCollaborationNode(1))
+    // await dispatch(fetchUsers());
+    // await dispatch(fetchResults());
+    // await dispatch(fetchCollaborations());
+    // await dispatch(fetchNodes());
+    // await dispatch(fetchOrgs());
+    // await dispatch(fetchCollaborationNode(1))
 
     // const orgs = _.uniq(_.map(getState().users, 'organization.id'));
     // orgs.forEach(org => dispatch(fetchOrg(org)));
@@ -106,7 +106,6 @@ export const fetchOrgs = () => async function(dispatch){
 //FETCH A SINGLE ORGANIZATION
 export const fetchOrg = (id) => async function(dispatch){
     if(id){
-        console.error("DISPACTCH")
         const response = await jsonPlaceholder.get(`/organization/${id}`);
         dispatch({type: 'FETCH_ORGANISATION', payload: response.data });
     }

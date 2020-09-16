@@ -18,12 +18,14 @@ class NodeList extends React.Component {
 
     nodeItem(node){
         var style = "";
-        console.log(`selected node = ${this.props.selectedNode}, node = ${node.id}`)
+        // console.log(`selected node = ${this.props.selectedNode}, node = ${node.id}`)
         if (this.props.selectedNode !== undefined){
             if (this.props.selectedNode === node.id){
                 style = "active"
             }
         }
+
+        var status = (node.status === null)? "offline" : node.status;
 
         return (
         <div className={`item ${style}`} key={node.id} onClick={() => this.props.selectNode(node.id)}>
@@ -33,7 +35,7 @@ class NodeList extends React.Component {
                     {node.name}
                 </div>
                 <div className="ui sub header">
-                    {node.status}
+                    {status}
                 </div>
             </div>
         </div>

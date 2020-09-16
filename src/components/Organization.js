@@ -9,11 +9,7 @@ class Organization extends React.Component{
         super(props)
         this.state = {active: false}
         if (!isEmpty(props.user.organization)){
-            console.log("FETCHHHH")
-            fetchOrg(props.user.organization.id)
-        } else {
-            console.log("++++++++++++++++++++")
-            console.log(props.organization)
+            this.props.fetchOrg(props.user.organization.id)
         }
 
     }
@@ -73,4 +69,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps)(Organization);
+export default connect(mapStateToProps, {fetchOrg} )(Organization);

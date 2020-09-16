@@ -105,13 +105,13 @@ class ProfileContent extends React.Component {
                         Currently it is not possible to update your info through the UI.
                     </div>
                     <div className="ui segment fluid">
-                        <div class="ui grid">
-                            <div class="six wide column">
+                        <div className="ui grid">
+                            <div className="six wide column">
                                 <div className="ui placeholder">
                                     <div className="image square"></div>
                                 </div>
                             </div>
-                            <div class="ten wide column">
+                            <div className="ten wide column">
                                 <h2 className="ui header">
                                     <div className="content">
                                         {this.props.user.firstname}&nbsp;{this.props.user.lastname}

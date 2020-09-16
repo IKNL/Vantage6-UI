@@ -11,12 +11,12 @@ const NodeDetail = ({selectedNode, nodes}) => {
     let node = nodes.filter(x => x.id === selectedNode)[0];
     let color = (node.status == "online") ? "green" : "red"
     let date = parse_date(node.last_seen)
-
+    let status = (node.status === null)? "offline" : node.status
     return (
         <div className="ui segment fluid">
             <div className="ui items">
                 <div className="item">
-                <div className={`ui label ${color} top attached`}>{node.status}</div>
+                <div className={`ui label ${color} top attached`}>{status}</div>
                     <div className="content">
                         <div className="ui label horizontal">ID<div className="detail">{node.id}</div></div>
                         <div className="ui header v6-blue">{node.name}</div>
