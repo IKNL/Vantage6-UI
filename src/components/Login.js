@@ -8,22 +8,32 @@ import cuppolone from '../images/cuppolone.jpg';
 import taipei101 from '../images/taipei101.jpg';
 import logo from '../images/artboard1.png';
 import { login, register, reset, returningVisit } from '../actions/upstreamActions';
+import jsonPlaceholder from '../apis/jsonPlaceholder'
+import { isEmpty } from 'lodash';
 
 class Login extends React.Component{
 
     constructor(props){
         super(props);
         this.state = {img: trolltunga, registration: false, forgotPassword: false}
-        const cookies = new Cookies();
-        const tok = cookies.get('token', { path: '/'});
-        if(tok){
-            //this.props.returningVisit(tok);
-        }
+        // this.state.version = this.fetchVersion();
+        // console.log(this.state.version.data);
     }
+
+    // fetchVersion = () => async function(){
+    //     const response = await jsonPlaceholder.get('./version');
+    //     console.log(response.data)
+    //     return response.data
+    // }
 
 
     componentDidMount(){
         this.getRandomImage();
+        jsonPlaceholder.get("./version")
+            .then(res => {
+                const version = res.data.version;
+                this.setState( { version } )
+            })
     }
 
     toggleRegistration(reg){
@@ -131,8 +141,15 @@ class Login extends React.Component{
                 </div>
             );
         }else{
+            var version = <div className="ui active inline loader tiny"></div>;
+            if (!isEmpty(this.state.version)){
+                version = this.state.version
+            }
+            // console.log(this.state.version.data);
+
             return (
                 <div className="ui middle aligned grid login-page ">
+                    <div className="ui bottom right attached label">vantage6-server version: {version}</div>
                     <img className="login-background-image" src={this.state.img} alt="background" />
                     <div className="login-overlay"></div>
 
